@@ -1,0 +1,16 @@
+.logInContainer{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    margin: 40px;
+}
+
+.form{
+    width: 25%;
+    min-width: 350px;
+}

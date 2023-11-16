@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import CauseBooksSection from './components/CauseBooksSection';
 import NavigationBar from './components/NavigationBar'
 import LogIn from './components/LogIn/LogIn'
@@ -11,9 +12,13 @@ function App() {
   return (
     <div className={styles.appStyle}>
         <NavigationBar/>
-        {/* <CauseBooksSection/> */}
-        {/* <LogIn/> */}
-        <RegisterUser/>
+
+        <Routes>
+            <Route path='/' element={<CauseBooksSection/>}/>
+            <Route path='/register' element={<RegisterUser/>}/>
+            <Route path='/login' element={<LogIn/>}/>
+        </Routes>
+     
         <Footer/>
     </div>
   )

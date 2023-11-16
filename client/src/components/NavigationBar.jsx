@@ -1,12 +1,13 @@
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import Logo from '../assets/images/Logo.png'
+import { Link } from 'react-router-dom';
 
 
 function NavigationBar() {
     return (
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <img
               alt="Logo"
               src={Logo}
@@ -35,8 +36,8 @@ function NavigationBar() {
               </NavDropdown> */}
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">Log In</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">Register</Nav.Link>
+              <Nav.Link as={Link} to="/login">Log In</Nav.Link>
+              <Nav.Link as={Link} eventKey={2} to="/register">Register</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

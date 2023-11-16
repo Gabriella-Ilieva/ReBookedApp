@@ -1,5 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import styles from './LogIn.module.css'
+import { Link } from 'react-router-dom';
 
 function LogIn() {
 return (
@@ -16,7 +17,7 @@ return (
             </Form.Group>
         </Form>
         <p>Don`t have an account?
-            <a> Register</a>
+            <Link to={'/register'}>Register</Link>
         </p>
     </div>
 );

@@ -1,7 +1,6 @@
 .appStyle{
+    height: auto;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background: url('../assets/images/bg-white-3.png') 0 0;
-    color: #3e4452;
 }

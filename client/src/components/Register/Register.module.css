@@ -1,9 +1,12 @@
-.logInContainer{
+.registerContainer{
     display: flex;
     flex-direction: column;
     height: 500px;
     justify-content: center;
     align-items: center;
+    background: url('../../assets/images/bg-white-3.png') 0 0;
+    color: #3e4452;
+    height: 85vh;
 }
 
 .title{

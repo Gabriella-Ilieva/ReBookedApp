@@ -3,45 +3,73 @@
     width: 100%;
     object-fit: cover;
     border-radius: 5%;
+    opacity: 80%;
+    position: relative;
 }
+
+.image:hover{
+    opacity: 100%;
+    z-index: 100;
+    transition-delay: .08s;
+    width: 110%;
+    height: 110%;
+    cursor: pointer;
+}
+
+/* .card:hover{
+    height: auto;
+    width: 260px;
+    transition-delay: .10s;
+    transform: translate(0) scale(1)
+} */
 
 .card{
-    position: relative;
     border-radius: 20px;
-    background: linear-gradient(45deg, lightgray, transparent);
     margin: 20px 0;
-    width: 280px;
+    width: 240px;
+    height: auto;
+    position: relative;
+    align-items: center;
 }
 
-.cardContent{
+/* .cardContent{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     position: relative;
     z-index: 100;
-}
+} */
 
 .titlePrice{
     display: flex;
     flex-direction: column;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     align-items: center;
     margin-top: 20px;
     color: black;
     text-align: center;
+    padding: 10px;
+    background-color: rgb(231, 231, 231);
+    opacity: 80%;
+    border-radius: 5%;
 }
 
 .title{
     font-size: 20px;
     font-weight: 600;
+    
 }
 
-.btn{
-    outline: none;
-    border: none;
-    background-color: gray;
+.badge{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(41, 80, 41);
     color: white;
-    padding: 8px 22px;
-    border-radius: 10px;
-    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 10%;
+    font-size: 12px;
 }

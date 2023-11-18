@@ -1,21 +1,14 @@
 .section{
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
+    height: auto;
+    padding: 50px 30px;
     justify-content: center;
     align-items: center;
+    background: url('../assets/images/bg-white-3.png') 0 0;
+    color: #3e4452;
 }
 
 .title{
-    margin-top: 50px;
     text-align: center;
     margin-bottom: 0;
     color: rgba(67, 66, 66, 0.991);
-}
-
-.books{
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }

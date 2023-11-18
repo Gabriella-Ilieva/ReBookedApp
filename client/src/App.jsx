@@ -19,7 +19,7 @@ function App() {
             <Route path='/login' element={<LogIn/>}/>
         </Routes>
      
-        <Footer/>
+        {/* <Footer/> */}
     </div>
   )
 }

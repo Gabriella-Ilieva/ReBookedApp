@@ -27,22 +27,22 @@ export default function RegisterUser() {
             <Form className={styles.form} onSubmit={onSubmit}>
                 <Form.Group className="mb-3" controlId="formGroupUsername">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Username" name='username' onChange={onChange}
+                    <Form.Control type="username" placeholder="Username" name={RegisterFormKeys.Username} onChange={onChange}
                         values={values[RegisterFormKeys.Username]} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" name='email' onChange={onChange}
+                    <Form.Control type="email" placeholder="Enter email" name={RegisterFormKeys.Email} onChange={onChange}
                         values={values[RegisterFormKeys.Email]} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name='password' onChange={onChange}
+                    <Form.Control type="password" placeholder="Password" name={RegisterFormKeys.Password} onChange={onChange}
                         values={values[RegisterFormKeys.Password]} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name='confirm-password' onChange={onChange}
+                    <Form.Control type="password" placeholder="Password" name={RegisterFormKeys.ConfirmPassword} onChange={onChange}
                         values={values[RegisterFormKeys.ConfirmPassword]} />
                 </Form.Group>
                 <Button variant="primary" type="submit">

@@ -8,6 +8,7 @@ import RegisterUser from './components/Register/Register';
 import Footer from './components/Footer';
 import { AuthProvider } from './contexts/authContext';
 import Path from './paths';
+import Logout from './components/LogOut/LogOut';
 
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
             <NavigationBar/>
             <Routes>
                 <Route path={Path.Home} element={<CauseBooksSection/>}/>
-                <Route path='/register' element={<RegisterUser/>}/>
-                <Route path='/login' element={<LogIn/>}/>
+                <Route path={Path.Register} element={<RegisterUser/>}/>
+                <Route path={Path.Login} element={<LogIn/>}/>
+                <Route path={Path.Logout} element={<Logout/>}/>
             </Routes>
         
             <Footer/>

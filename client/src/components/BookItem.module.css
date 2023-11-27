@@ -10,9 +10,9 @@
 .image:hover{
     opacity: 100%;
     z-index: 100;
-    transition-delay: .08s;
+    /* transition-delay: .08s;
     width: 110%;
-    height: 110%;
+    height: 110%; */
     cursor: pointer;
 }
 

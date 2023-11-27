@@ -25,29 +25,11 @@ export default function RegisterUser() {
         <div className={styles.registerContainer}>
             <h3 className={styles.title}>REGISTER</h3>
             <Form className={styles.form} onSubmit={onSubmit}>
-                <Form.Group className="mb-3" controlId="formGroupUsername">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Username" name={RegisterFormKeys.Username} onChange={onChange}
-                        values={values[RegisterFormKeys.Username]} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" name={RegisterFormKeys.Email} onChange={onChange}
-                        values={values[RegisterFormKeys.Email]} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name={RegisterFormKeys.Password} onChange={onChange}
-                        values={values[RegisterFormKeys.Password]} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name={RegisterFormKeys.ConfirmPassword} onChange={onChange}
-                        values={values[RegisterFormKeys.ConfirmPassword]} />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                <Form.Control type="username" placeholder="Username" name={RegisterFormKeys.Username} onChange={onChange} values={values[RegisterFormKeys.Username]} />
+                <Form.Control type="email" placeholder="Email" name={RegisterFormKeys.Email} onChange={onChange} values={values[RegisterFormKeys.Email]} />
+                <Form.Control type="password" placeholder="Password" name={RegisterFormKeys.Password} onChange={onChange} values={values[RegisterFormKeys.Password]} />
+                <Form.Control type="password" placeholder="Confirm Password" name={RegisterFormKeys.ConfirmPassword} onChange={onChange} values={values[RegisterFormKeys.ConfirmPassword]} />
+                <Button variant="primary" type="submit"> Submit </Button>
             </Form>
             <p className={styles.additionalText}>Already have an account? 
                 <Link to={'/login'}><b>Log In</b></Link>

@@ -23,11 +23,9 @@ function LogIn() {
             <h3 className={styles.title}>Log In</h3>
             <Form className={styles.form} onSubmit={onSubmit}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" name={LoginFormKyes.Email} onChange={onChange} value={values[LoginFormKyes.Email]} />
+                    <Form.Control type="email" placeholder="Email" name={LoginFormKyes.Email} onChange={onChange} value={values[LoginFormKyes.Email]} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" name={LoginFormKyes.Password}onChange={onChange} value={values[LoginFormKyes.Password]} />
                 </Form.Group>
                 <Button variant="primary" type="submit">

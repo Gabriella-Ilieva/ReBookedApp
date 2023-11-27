@@ -5,7 +5,8 @@ const Path = {
     Register: '/register',
     AddBook: '/add-book',
     UserDetails: '/users/:userId',
-    EditProfile: '/users/:userId/edit'
+    EditProfile: '/users/:userId/edit',
+    AllBooks: '/all-books',
 };
 
 export default Path;

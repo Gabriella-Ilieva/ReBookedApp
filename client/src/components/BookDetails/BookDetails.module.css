@@ -1,0 +1,65 @@
+.wrapper{
+    padding: 30px;
+    text-align: center;
+    background: url('../../assets/images/bg-white-3.png') 0 0;
+    color: #3e4452;
+}
+
+.content{
+    margin: 30px 50px;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imageContainer{
+    width: 300px;
+    height: 350px;
+    min-width: 250px;
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    opacity: 80%;
+    position: relative;
+    object-fit: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 50px;
+}
+
+.bookData{
+    display: inline;
+    margin-left: 40px;
+    width: 40%;
+    min-width: 350px;
+    margin-bottom: 50px;
+}
+
+.causeSection{
+    width: 30%;
+    min-width: 350px;
+    margin-bottom: 50px;
+}
+
+.causeText{
+    line-height: 35px;
+    background-color: rgba(242, 243, 243, 1);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.important{
+    color: red;
+    display: block;
+    text-align: center;
+    font-weight: 700;
+}
+
+.description{
+    margin: 30px 0;
+}

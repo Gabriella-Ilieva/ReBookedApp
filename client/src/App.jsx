@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import CauseBooksSection from './components/CauseBooksSection';
 import NavigationBar from './components/NavigationBar'
 import LogIn from './components/LogIn/LogIn'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,6 +10,8 @@ import Path from './paths';
 import Logout from './components/LogOut/LogOut';
 import AddBook from './components/AddBook/AddBook';
 import AllBooks from './components/AllBooks/AllBooks';
+import HomePage from './components/HomePage/HomePage';
+import BookDetails from './components/BookDetails/BookDetails';
 
 
 function App() {
@@ -19,12 +20,13 @@ function App() {
         <div className={styles.appStyle}>
             <NavigationBar/>
             <Routes>
-                <Route path={Path.Home} element={<CauseBooksSection/>}/>
-                <Route path={Path.Register} element={<RegisterUser/>}/>
-                <Route path={Path.Login} element={<LogIn/>}/>
-                <Route path={Path.Logout} element={<Logout/>}/>
-                <Route path={Path.AddBook} element={<AddBook/>}/>
+                <Route path={Path.Home} element={ <HomePage/> }/>
+                <Route path={Path.Register} element={ <RegisterUser/> }/>
+                <Route path={Path.Login} element={ <LogIn/> }/>
+                <Route path={Path.Logout} element={ <Logout/> }/>
+                <Route path={Path.AddBook} element={ <AddBook/> }/>
                 <Route path={Path.AllBooks} element={ <AllBooks/>} />
+                <Route path={Path.BookDetails} element={ <BookDetails/> }/>
             </Routes>
         
             <Footer/>

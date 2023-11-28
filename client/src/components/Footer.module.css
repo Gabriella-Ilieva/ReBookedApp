@@ -2,7 +2,7 @@
     position: sticky;
     bottom: 0;
     width: 100%;
-    background-color: rgb(219, 219, 219);
+    background-color: rgba(242, 243, 243, 1);
     padding: 20px 60px;
     text-align: right;
 }

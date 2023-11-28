@@ -45,3 +45,19 @@ export const language = {
     Spanish: 'spanish',
     Other: 'other'
 }
+
+
+export const bookFormKeys = {
+    Title: 'title',
+    Author: 'author',
+    Genre: 'genre',
+    Image: 'image',
+    Description: 'description',
+    Price: 'price',
+    Cover: 'cover',
+    'With Cause': 'withCause',
+    'Cause URL': 'causeURL',
+    Condition: 'condition',
+    Language: 'language',
+    'Book Location': 'bookLocation',
+};

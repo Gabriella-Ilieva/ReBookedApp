@@ -7,7 +7,6 @@ import BookItem from '../BookItem/BookItem';
 export default function AllBooks() {
     const [books, setBooks] = useState([]);
 
-    console.log(books);
 
     useEffect(() => {
         booksService.getAll()

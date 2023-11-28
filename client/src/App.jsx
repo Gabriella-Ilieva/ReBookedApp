@@ -12,6 +12,7 @@ import AddBook from './components/AddBook/AddBook';
 import AllBooks from './components/AllBooks/AllBooks';
 import HomePage from './components/HomePage/HomePage';
 import BookDetails from './components/BookDetails/BookDetails';
+import EditBook from './components/EditBook/EditBook';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                 <Route path={Path.AddBook} element={ <AddBook/> }/>
                 <Route path={Path.AllBooks} element={ <AllBooks/>} />
                 <Route path={Path.BookDetails} element={ <BookDetails/> }/>
+                <Route path={Path.EditBook} element={ <EditBook/> }/>
             </Routes>
         
             <Footer/>

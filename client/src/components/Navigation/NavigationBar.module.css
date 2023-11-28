@@ -1,0 +1,13 @@
+.container.navbar{
+    background-color: white;
+}
+
+.navigation{
+    font-size: 17px;
+}
+
+.navigation a{
+    line-height: 32px;
+    color: #424242;
+    font-size: 17px;
+}

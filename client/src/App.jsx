@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import NavigationBar from './components/NavigationBar'
+import NavigationBar from './components/Navigation/NavigationBar'
 import LogIn from './components/LogIn/LogIn'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './components/App.module.css'
 import RegisterUser from './components/Register/Register';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 import { AuthProvider } from './contexts/authContext';
 import Path from './paths';
 import Logout from './components/LogOut/LogOut';

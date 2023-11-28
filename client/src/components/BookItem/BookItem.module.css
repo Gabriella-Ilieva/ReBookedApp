@@ -32,7 +32,7 @@
     bottom: 0;
     align-items: center;
     margin-top: 20px;
-    color: black;
+    color: #434343;
     text-align: center;
     padding: 10px;
     background-color: rgb(231, 231, 231);
@@ -40,7 +40,7 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .badgeCause{

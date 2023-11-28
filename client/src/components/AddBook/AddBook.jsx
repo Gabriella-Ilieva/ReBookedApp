@@ -4,6 +4,7 @@ import styles from '../Register/Register.module.css'
 
 import * as booksService from '../../services/booksService';
 import { useState } from 'react';
+import { genres, language } from './DropDowns';
 
 const AddBookFormKeys = {
     Title: 'title',
@@ -13,17 +14,13 @@ const AddBookFormKeys = {
     Description: 'description',
     Price: 'price',
     Cover: 'cover',
-    'With Cause': 'with-cause',
-    'Cause URL': 'cause-url',
+    'With Cause': 'withCause',
+    'Cause URL': 'causeURL',
     Condition: 'condition',
-    
+    Language: 'language',
+    'Book Location': 'bookLocation',
 };
 
-const genres = {
-    Genre: 'genre',
-    Biography: 'biography',
-    Fantastic: 'fantastic',
-}
 
 const initialState = {
     title: '',
@@ -33,9 +30,11 @@ const initialState = {
     description: '',
     price: '',
     cover: '',
-    'with-cause': false,
-    'cause-url': '',
+    withCause: false,
+    causeURL: '',
     condition: '',
+    language: '',
+    bookLocation: '',
 }
 
 export default function AddBook() {
@@ -44,12 +43,13 @@ export default function AddBook() {
 
     const formHandler = (e) => {
         let value = '';
-        console.log(e.target.type);
 
         switch (e.target.type) {
             case 'checkbox':
                 value = !form[e.target.name]
                 break;
+            case 'number':
+                value = Number(e.target.value)
             default:
                 value = e.target.value
                 break;
@@ -66,7 +66,6 @@ export default function AddBook() {
 
         try {
             await booksService.create(form);
-            console.log(form)
             navigate('/all-books');
         } catch (err) {
             // Error notification
@@ -85,9 +84,28 @@ export default function AddBook() {
                     <option key={g} name={g} value={form.genre}>{g}</option>
                     )}
                 </Form.Select>
+                <Form.Select placeholder='Language' onChange={formHandler}>
+                    {Object.keys(language).map((l) => 
+                    <option key={l} name={l} value={form.language}>{l}</option>
+                    )}
+                </Form.Select>
+                <Form.Select onChange={formHandler}>
+                    <option name={AddBookFormKeys.Cover} value={form.cover}>Cover type</option>
+                    <option name={AddBookFormKeys.Cover} value={form.cover}>Hardcover</option>
+                    <option name={AddBookFormKeys.Cover} value={form.cover}>Softcover</option>
+                </Form.Select>
                 <Form.Control type="text" placeholder="Image URL" name={AddBookFormKeys.Image} value={form.image} onChange={formHandler} />
+                <Form.Select onChange={formHandler}>
+                    <option name={AddBookFormKeys.Condition} value={form.condition}>Condition</option>
+                    <option name={AddBookFormKeys.Condition} value={form.condition}>New</option>
+                    <option name={AddBookFormKeys.Condition} value={form.condition}>As a new</option>
+                    <option name={AddBookFormKeys.Condition} value={form.condition}>Used</option>
+                </Form.Select>
+                <Form.Control type="text" placeholder="Book location (country/town)" name={AddBookFormKeys['Book Location']} value={form['bookLocation']} onChange={formHandler} />
+                <Form.Control type="number" placeholder="Price in BGN" name={AddBookFormKeys.Price} value={form.price} onChange={formHandler} />
+                <Form.Check type="checkbox" label="Book with Cause" name='withCause' onClick={formHandler}/>
+                <Form.Control className={`with-cause ${form['withCause'] ? 'active' : ''}`} type="text" placeholder="Cause URL" name={AddBookFormKeys['Cause URL']} value={form['causeURL']} onChange={formHandler} />
                 <Form.Control type="textarea" placeholder="Description" name={AddBookFormKeys.Description} value={form.description} onChange={formHandler} />
-                <Form.Check type="checkbox" label="Book with Cause" name='with-cause' onClick={formHandler}/>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

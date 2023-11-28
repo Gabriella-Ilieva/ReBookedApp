@@ -1,4 +1,4 @@
-import BookItem from "./BookItem";
+import BookItem from "./BookItem/BookItem";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import styles from './CauseBooksSection.module.css';

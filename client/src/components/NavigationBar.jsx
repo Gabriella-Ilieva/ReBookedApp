@@ -26,7 +26,7 @@ function NavigationBar() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="#features">About</Nav.Link>
-                        <Nav.Link href="#pricing">Books</Nav.Link>
+                        <Nav.Link as={Link} to={Path.AllBooks}>Books</Nav.Link>
                         <Nav.Link href="#pricing">Causes</Nav.Link>
                     </Nav>
                     {!isAuthenticated && (

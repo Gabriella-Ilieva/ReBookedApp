@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import * as booksService from '../../services/booksService'
 import BookItem from "../BookItem/BookItem";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -6,6 +8,13 @@ import Slider from "react-slick";
 
 
 function CauseBookSection(){
+    const [latestCauseBooks, setLatestCauseBooks] = useState([]);
+
+    useEffect(() => {
+        booksService.getLatestBooks('withCause=true', 0, 15)
+            .then(result => setLatestCauseBooks(result));
+    }, [])
+
     var settings = {
         dots: true,
         infinite: false,
@@ -49,20 +58,12 @@ function CauseBookSection(){
           }
         ]
       };
+
     return(
         <div className={styles.section}>
-        <h3 className={styles.title}>Books with cause</h3>
+        <h3 className={styles.title}>BOOKS WITH CAUSE</h3>
             <Slider {...settings}>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
-                <BookItem/>
+                {latestCauseBooks.map( book => <BookItem key={book._id} {...book} />)}
             </Slider>
         </div>
     )

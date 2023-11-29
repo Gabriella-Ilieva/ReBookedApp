@@ -27,3 +27,15 @@ export const edit = async (bookId, bookData) => {
 };
 
 export const remove = async (bookId) => request.remove(`${baseUrl}/${bookId}`);
+
+export const getLatestBooks = async (whereClause, offset, pageSize) => {
+    const query = new URLSearchParams({
+        where: whereClause,
+        offset: offset,
+        pageSize: pageSize,
+    });
+
+    const result = await request.get(`${baseUrl}?sortBy=_createdOn%20desc&${query}`);
+
+    return result;
+}

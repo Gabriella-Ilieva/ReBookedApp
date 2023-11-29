@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/authContext';
+import AuthGuard from './components/RouteGuard/AuthGuard'
 
 import NavigationBar from './components/Navigation/NavigationBar'
 import Footer from './components/Footer/Footer';
@@ -28,12 +29,14 @@ function App() {
                 <Route path={Path.Home} element={ <HomePage/> }/>
                 <Route path={Path.Register} element={ <RegisterUser/> }/>
                 <Route path={Path.Login} element={ <LogIn/> }/>
-                <Route path={Path.Logout} element={ <Logout/> }/>
-                <Route path={Path.AddBook} element={ <AddBook/> }/>
                 <Route path={Path.AllBooks} element={ <AllBooks/>} />
                 <Route path={Path.BookDetails} element={ <BookDetails/> }/>
-                <Route path={Path.EditBook} element={ <EditBook/> }/>
-                <Route path={Path.UsersBooks} element={ <UsersBooks/> }/>
+                <Route element={<AuthGuard />}>
+                    <Route path={Path.AddBook} element={ <AddBook/> }/>
+                    <Route path={Path.EditBook} element={ <EditBook/> }/>
+                    <Route path={Path.UsersBooks} element={ <UsersBooks/> }/>
+                    <Route path={Path.Logout} element={ <Logout/> }/>
+                </Route>
             </Routes>
         
             <Footer/>

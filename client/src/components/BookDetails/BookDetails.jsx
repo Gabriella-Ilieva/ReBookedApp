@@ -5,13 +5,15 @@ import cover from '../../assets/images/atlas-izpravi-ramene.jpg'
 import styles from './BookDetails.module.css'
 import AuthContext from "../../contexts/authContext";
 import Path from "../../paths";
+import { pathToUrl } from "../../utils/pathUtils";
 
 function BookDetails() {
     const { userId } = useContext(AuthContext)
     const [book, setBook] = useState({});
     const { bookId } = useParams();
-    let causeLink = '';
     const navigate = useNavigate();
+    let price = 0;
+    let causeLink = '';
 
     useEffect(() => {
         booksService.getOne(bookId)
@@ -19,6 +21,7 @@ function BookDetails() {
     }, [bookId]);
 
     causeLink = book.causeURL
+    price = Number(book.price).toFixed(2)
 
     const deleteHandler = async () => {
         const hasConfirmed = confirm(`Are you sure you want to delete ${book.title} ?`);
@@ -48,7 +51,7 @@ function BookDetails() {
                     <p><b>Cover: </b>{book.cover}</p>
                     <p><b>Condition: </b>{book.condition}</p>
                     <p><b>Language: </b>{book.language}</p>
-                    <p><b>Price: </b>{book.price > 0 ? book.price : 'FREE'}</p>
+                    <p><b>Price: </b>{book.price > 0 ? Number(book.price).toFixed(2) : 'FREE'}</p>
                     <p><b>Book location: </b>{book.bookLocation}</p>
                 </div>
                 
@@ -57,7 +60,9 @@ function BookDetails() {
                 </div>
                 {userId === book._ownerId && (
                     <div className={styles.buttons}>
-                    <Link to={Path.EditBook}>Edit</Link>
+                    <Link to={pathToUrl(Path.EditBook, {bookId})}>
+                        <button>Edit</button>
+                    </Link>
                     <button onClick={deleteHandler}>Delete</button>
                 </div>
                 )}

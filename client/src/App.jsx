@@ -1,18 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
-import NavigationBar from './components/Navigation/NavigationBar'
-import LogIn from './components/LogIn/LogIn'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './components/App.module.css'
-import RegisterUser from './components/Register/Register';
-import Footer from './components/Footer/Footer';
 import { AuthProvider } from './contexts/authContext';
-import Path from './paths';
+
+import NavigationBar from './components/Navigation/NavigationBar'
+import Footer from './components/Footer/Footer';
+import HomePage from './components/HomePage/HomePage';
+import RegisterUser from './components/Register/Register';
+import LogIn from './components/LogIn/LogIn'
 import Logout from './components/LogOut/LogOut';
 import AddBook from './components/AddBook/AddBook';
-import AllBooks from './components/AllBooks/AllBooks';
-import HomePage from './components/HomePage/HomePage';
 import BookDetails from './components/BookDetails/BookDetails';
 import EditBook from './components/EditBook/EditBook';
+import AllBooks from './components/AllBooks/AllBooks';
+
+import Path from './paths';
+
+import styles from './components/App.module.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

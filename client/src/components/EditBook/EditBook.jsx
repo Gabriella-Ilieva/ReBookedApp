@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {Form, Button} from 'react-bootstrap';
 import styles from '../Register/Register.module.css'
 
 import * as booksService from '../../services/booksService';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { genres, language, bookFormKeys } from '../../lib/bookLib';
 
 
@@ -23,15 +23,23 @@ const initialState = {
 }
 
 export default function AddBook() {
-    const[form, setForm] = useState(initialState);
+    const { bookId } = useParams();
+    const[book, setBook] = useState(initialState);
     const navigate = useNavigate();
 
-    const formHandler = (e) => {
+    useEffect(() => {
+        booksService.getOne(bookId)
+            .then(result => {
+                setBook(result);
+            });
+    }, [bookId]);
+
+    const bookHandler = (e) => {
         let value = '';
 
         switch (e.target.type) {
             case 'checkbox':
-                value = !form[e.target.name]
+                value = !book[e.target.name]
                 break;
             case 'number':
                 value = Number(e.target.value)
@@ -41,17 +49,17 @@ export default function AddBook() {
                 break;
         }
 
-        setForm(form => ({
-            ...form,
+        setBook(book => ({
+            ...book,
             [e.target.name]: value
         }))
     }
     
-    const addBookSubmitHandler = async (e) => {
+    const editBookSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
-            await booksService.create(form);
+            await booksService.edit(bookId, book);
             navigate('/all-books');
         } catch (err) {
             // Error notification
@@ -62,36 +70,36 @@ export default function AddBook() {
     return (
         <div className={styles.registerContainer}>
             <h3 className={styles.title}>ADD BOOK</h3>
-            <Form className={styles.form} onSubmit={addBookSubmitHandler}>
-                <Form.Control type="text" placeholder="Title" name={bookFormKeys.Title} value={form.title} onChange={formHandler}/>
-                <Form.Control type="text" placeholder="Author" name={bookFormKeys.Author} value={form.author} onChange={formHandler} />
-                <Form.Select type="select-one" name={bookFormKeys.Genre} onChange={formHandler} value={form.genre}>
+            <Form className={styles.form} onSubmit={editBookSubmitHandler}>
+                <Form.Control type="text" placeholder="Title" name={bookFormKeys.Title} value={book.title} onChange={bookHandler}/>
+                <Form.Control type="text" placeholder="Author" name={bookFormKeys.Author} value={book.author} onChange={bookHandler} />
+                <Form.Select type="select-one" name={bookFormKeys.Genre} onChange={bookHandler} value={book.genre}>
                     {Object.keys(genres).map((g) => 
                     <option key={g} type="text" name={g} value={g}>{g}</option>
                     )}
                 </Form.Select>
-                <Form.Select type="select-one" name={bookFormKeys.Language} value={form.language} onChange={formHandler}>
+                <Form.Select type="select-one" name={bookFormKeys.Language} value={book.language} onChange={bookHandler}>
                     {Object.keys(language).map((l) => 
                     <option key={l} value={language.l}>{l}</option>
                     )}
                 </Form.Select>
-                <Form.Select type="select-one" name={bookFormKeys.Cover} onChange={formHandler} value={form.cover}>
-                    <option value='cover-type'>Cover type</option>
-                    <option value='hardcover' >Hardcover</option>
-                    <option value='softcover' >Softcover</option>
+                <Form.Select type="select-one" name={bookFormKeys.Cover} onChange={bookHandler} value={book.cover}>
+                    <option value='Cover Type'>Cover type</option>
+                    <option value='Hardcover' >Hardcover</option>
+                    <option value='Softcover' >Softcover</option>
                 </Form.Select>
-                <Form.Control type="text" placeholder="Image URL" name={bookFormKeys.Image} value={form.image} onChange={formHandler} />
-                <Form.Select type="select-one" name={bookFormKeys.Condition} value={form.condition} onChange={formHandler}>
-                    <option value='condition' >Condition</option>
-                    <option value='new' >New</option>
-                    <option value='as-new' >As a new</option>
-                    <option value='used' >Used</option>
+                <Form.Control type="text" placeholder="Image URL" name={bookFormKeys.Image} value={book.image} onChange={bookHandler} />
+                <Form.Select type="select-one" name={bookFormKeys.Condition} value={book.condition} onChange={bookHandler}>
+                    <option value='Condition' >Condition</option>
+                    <option value='New' >New</option>
+                    <option value='As new' >As new</option>
+                    <option value='Used' >Used</option>
                 </Form.Select>
-                <Form.Control type="text" placeholder="Book location (country/town)" name={bookFormKeys['Book Location']} value={form['bookLocation']} onChange={formHandler} />
-                <Form.Control type="number" placeholder="Price in BGN" name={bookFormKeys.Price} value={form.price} onChange={formHandler} />
-                <Form.Check type="checkbox" label="Book with Cause" name='withCause' onClick={formHandler}/>
-                <Form.Control className={`with-cause ${form['withCause'] ? 'active' : ''}`} type="text" placeholder="Cause URL" name={bookFormKeys['Cause URL']} value={form['causeURL']} onChange={formHandler} />
-                <Form.Control type="textarea" placeholder="Description" name={bookFormKeys.Description} value={form.description} onChange={formHandler} />
+                <Form.Control type="text" placeholder="Book location (country/town)" name={bookFormKeys['Book Location']} value={book['bookLocation']} onChange={bookHandler} />
+                <Form.Control type="number" placeholder="Price in BGN" name={bookFormKeys.Price} value={book.price} onChange={bookHandler} />
+                <Form.Check type="checkbox" label="Book with Cause" name='withCause' onClick={bookHandler}/>
+                <Form.Control className={`with-cause ${book['withCause'] ? 'active' : ''}`} type="text" placeholder="Cause URL" name={bookFormKeys['Cause URL']} value={book['causeURL']} onChange={bookHandler} />
+                <Form.Control type="textarea" placeholder="Description" name={bookFormKeys.Description} value={book.description} onChange={bookHandler} />
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

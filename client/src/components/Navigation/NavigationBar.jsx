@@ -6,6 +6,7 @@ import Path from '../../paths';
 import {Container, Nav, Navbar, NavDropdown, Modal} from 'react-bootstrap'
 import Logo from '../../assets/images/Logo.png'
 import styles from './NavigationBar.module.css';
+import { pathToUrl } from '../../utils/pathUtils';
 
 
 function NavigationBar() {
@@ -53,7 +54,7 @@ function NavigationBar() {
                                 <Nav.Link as={Link} to={Path.AddBook}>Add Book</Nav.Link>
                                 <NavDropdown title={username} id="basic-nav-dropdown">
                                     <NavDropdown.Item onClick={handleShow}>View details</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to={Path.EditProfile}>Edit Profile</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to={pathToUrl(Path.UsersBooks, {userId})}>My books</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to={Path.Logout}>Log Out</NavDropdown.Item>
                                 </NavDropdown>
                             </Nav>

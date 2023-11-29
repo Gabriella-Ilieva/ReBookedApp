@@ -28,14 +28,26 @@ export const edit = async (bookId, bookData) => {
 
 export const remove = async (bookId) => request.remove(`${baseUrl}/${bookId}`);
 
-export const getLatestBooks = async (whereClause, offset, pageSize) => {
+export const getLatestBooks = async (whereClause, offset, count) => {
+    
     const query = new URLSearchParams({
         where: whereClause,
         offset: offset,
-        pageSize: pageSize,
+        pageSize: count,
     });
 
     const result = await request.get(`${baseUrl}?sortBy=_createdOn%20desc&${query}`);
+
+    return result;
+}
+
+export const getUsersBooks = async (userId) => {
+    
+    const query = new URLSearchParams({
+        where: `_ownerId="${userId}"`,
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
 
     return result;
 }

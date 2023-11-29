@@ -8,6 +8,7 @@ const Path = {
     AllBooks: '/all-books',
     BookDetails: '/all-books/:bookId',
     EditBook: '/all-books/:bookId/edit',
+    UsersBooks: '/books/:userId',
 };
 
 export default Path;

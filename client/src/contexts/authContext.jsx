@@ -24,7 +24,7 @@ export const AuthProvider = ({
     };
 
     const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.username, values.email, values.password);
+        const result = await authService.register(values.username, values.email, values.imageUrl, values.country, values.city, values.password);
 
         setAuth(result);
 
@@ -45,6 +45,9 @@ export const AuthProvider = ({
         username: auth.username,
         email: auth.email,
         userId: auth._id,
+        imageUrl: auth.imageUrl,
+        country: auth.country,
+        city: auth.city,
         isAuthenticated: !!auth.accessToken,
     };
 

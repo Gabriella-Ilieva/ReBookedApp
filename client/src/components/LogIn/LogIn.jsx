@@ -5,7 +5,7 @@ import AuthContext from '../../contexts/authContext';
 import styles from './LogIn.module.css'
 import { Link } from 'react-router-dom';
 
-const LoginFormKyes = {
+const LoginFormKeys = {
     Email: 'email',
     Password: 'password',
 };
@@ -14,8 +14,8 @@ function LogIn() {
 
     const { loginSubmitHandler } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-        [LoginFormKyes.Email]: '',
-        [LoginFormKyes.Password]: '',
+        [LoginFormKeys.Email]: '',
+        [LoginFormKeys.Password]: '',
     });
 
     return (
@@ -23,10 +23,10 @@ function LogIn() {
             <h3 className={styles.title}>Log In</h3>
             <Form className={styles.form} onSubmit={onSubmit}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Control type="email" placeholder="Email" name={LoginFormKyes.Email} onChange={onChange} value={values[LoginFormKyes.Email]} />
+                    <Form.Control type="email" placeholder="Email" name={LoginFormKeys.Email} onChange={onChange} value={values[LoginFormKeys.Email]} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <Form.Control type="password" placeholder="Password" name={LoginFormKyes.Password}onChange={onChange} value={values[LoginFormKyes.Password]} />
+                    <Form.Control type="password" placeholder="Password" name={LoginFormKeys.Password}onChange={onChange} value={values[LoginFormKeys.Password]} />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit

@@ -1,14 +1,25 @@
-import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap'
-import Logo from '../../assets/images/Logo.png'
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../contexts/authContext';
+import * as authService from '../../services/authService'
 import Path from '../../paths';
+import {Container, Nav, Navbar, NavDropdown, Modal} from 'react-bootstrap'
+import Logo from '../../assets/images/Logo.png'
 import styles from './NavigationBar.module.css';
 
 
 function NavigationBar() {
-    const {isAuthenticated, username} = useContext(AuthContext)
+    const {isAuthenticated, username, userId} = useContext(AuthContext);
+    const [userData, setUserData] = useState({});
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        authService.userDetails()
+            .then(setUserData);
+    }, [userId]);
+    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <div className={styles.container}>
@@ -41,13 +52,31 @@ function NavigationBar() {
                             <Nav>
                                 <Nav.Link as={Link} to={Path.AddBook}>Add Book</Nav.Link>
                                 <NavDropdown title={username} id="basic-nav-dropdown">
-                                    <NavDropdown.Item as={Link} to={Path.UserDetails}>View details</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={handleShow}>View details</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to={Path.EditProfile}>Edit Profile</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to={Path.Logout}>Log Out</NavDropdown.Item>
                                 </NavDropdown>
                             </Nav>
                         )}
                     </Navbar.Collapse>
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>{userData.username}'s details</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <div className={styles.modal}>
+                                    <div className={styles.imageContainer}>
+                                        <img className={styles.image} src={userData.imageUrl}/>
+                                    </div>
+                                    <div>
+                                        <p><b>Username: </b>{userData.username}</p>
+                                        <p><b>E-mail: </b>{userData.email}</p>
+                                        <p><b>Country: </b>{userData.country}</p>
+                                        <p><b>City: </b>{userData.city}</p>
+                                    </div>
+                                </div>
+                            </Modal.Body>
+                        </Modal>
                 </Container>
             </Navbar>
         </div>

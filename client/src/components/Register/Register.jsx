@@ -10,6 +10,9 @@ import useForm from '../../hooks/useForm';
 const RegisterFormKeys = {
     Username: 'username',
     Email: 'email',
+    ImageURL: 'imageUrl',
+    Country: 'country',
+    City: 'city',
     Password: 'password',
     ConfirmPassword: 'confirm-password',
 };
@@ -17,7 +20,11 @@ const RegisterFormKeys = {
 export default function RegisterUser() {
     const { registerSubmitHandler } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+        [RegisterFormKeys.Username]: '',
         [RegisterFormKeys.Email]: '',
+        [RegisterFormKeys.ImageURL]: '',
+        [RegisterFormKeys.Country]: '',
+        [RegisterFormKeys.City]: '',
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: '',
     });
@@ -25,8 +32,11 @@ export default function RegisterUser() {
         <div className={styles.registerContainer}>
             <h3 className={styles.title}>REGISTER</h3>
             <Form className={styles.form} onSubmit={onSubmit}>
-                <Form.Control type="username" placeholder="Username" name={RegisterFormKeys.Username} onChange={onChange} values={values[RegisterFormKeys.Username]} />
+                <Form.Control type="text" placeholder="Username" name={RegisterFormKeys.Username} onChange={onChange} values={values[RegisterFormKeys.Username]} />
                 <Form.Control type="email" placeholder="Email" name={RegisterFormKeys.Email} onChange={onChange} values={values[RegisterFormKeys.Email]} />
+                <Form.Control type="text" placeholder="Image URL" name={RegisterFormKeys.ImageURL} onChange={onChange} values={values[RegisterFormKeys.ImageURL]} />
+                <Form.Control type="text" placeholder="Country" name={RegisterFormKeys.Country} onChange={onChange} values={values[RegisterFormKeys.Country]} />
+                <Form.Control type="text" placeholder="City" name={RegisterFormKeys.City} onChange={onChange} values={values[RegisterFormKeys.City]} />
                 <Form.Control type="password" placeholder="Password" name={RegisterFormKeys.Password} onChange={onChange} values={values[RegisterFormKeys.Password]} />
                 <Form.Control type="password" placeholder="Confirm Password" name={RegisterFormKeys.ConfirmPassword} onChange={onChange} values={values[RegisterFormKeys.ConfirmPassword]} />
                 <Button variant="primary" type="submit"> Submit </Button>

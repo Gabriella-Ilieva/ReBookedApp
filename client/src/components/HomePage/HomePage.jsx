@@ -1,8 +1,14 @@
 import CauseBookSection from "./CauseBooksSection";
+import FreeBooksSection from './FreeBooksSection';
+import LatestBooksSection from "./LatestBooksSection";
 
 function HomePage() {
     return(
-        <CauseBookSection/>
+        <>
+            <CauseBookSection/>
+            <FreeBooksSection/>
+            <LatestBooksSection/>
+        </>
     );
 }
 

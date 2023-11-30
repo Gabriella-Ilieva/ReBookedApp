@@ -1,15 +1,17 @@
 import { useState, useEffect, useContext } from "react";
 import * as booksService from '../../services/booksService'
 import { Link, useNavigate, useParams } from "react-router-dom";
-import cover from '../../assets/images/atlas-izpravi-ramene.jpg'
+import cover from '../../assets/images/book-cover.jpg'
 import styles from './BookDetails.module.css'
 import AuthContext from "../../contexts/authContext";
 import Path from "../../paths";
 import { pathToUrl } from "../../utils/pathUtils";
+import { DropdownButton, Dropdown, ButtonGroup, Toast } from 'react-bootstrap';
 
 function BookDetails() {
-    const { userId } = useContext(AuthContext)
+    const { userId, isAuthenticated } = useContext(AuthContext)
     const [book, setBook] = useState({});
+    const [showA, setShowA] = useState(true);
     const { bookId } = useParams();
     const navigate = useNavigate();
     let price = 0;
@@ -18,10 +20,15 @@ function BookDetails() {
     useEffect(() => {
         booksService.getOne(bookId)
             .then(setBook);
+        
     }, [bookId]);
 
     causeLink = book.causeURL
     price = Number(book.price).toFixed(2)
+      
+    const toggleShowA = () => {
+        setShowA(!showA)
+    };
 
     const deleteHandler = async () => {
         const hasConfirmed = confirm(`Are you sure you want to delete ${book.title} ?`);
@@ -53,6 +60,26 @@ function BookDetails() {
                     <p><b>Language: </b>{book.language}</p>
                     <p><b>Price: </b>{book.price > 0 ? Number(book.price).toFixed(2) : 'FREE'}</p>
                     <p><b>Book location: </b>{book.bookLocation}</p>
+                    <p><b>Owner: </b>{book.ownerUsername}</p>
+                    <div className="mb-2">
+                        <DropdownButton
+                            as={ButtonGroup}
+                            key={'end'}
+                            id={`dropdown-button-drop-end`}
+                            drop={'end'}
+                            variant="secondary"
+                            title='Owner contacts'
+                            >
+                            {isAuthenticated && 
+                            <>
+                                <Dropdown.Item eventKey="1">Email: {book.ownerEmail}</Dropdown.Item>
+                                <Dropdown.Item eventKey="2">Phone: {book.ownerPhone}</Dropdown.Item>
+                            </>
+                            }
+                            {!isAuthenticated && 
+                            <Dropdown.Item as={Link} to={Path.Login} eventKey="3">You have to Log In to see this information</Dropdown.Item>}
+                        </DropdownButton>
+                    </div>
                 </div>
                 
                 <div className={styles.bookDescription}>

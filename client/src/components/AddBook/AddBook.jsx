@@ -3,7 +3,8 @@ import {Form, Button} from 'react-bootstrap';
 import styles from '../AddBook/AddBook.module.css'
 
 import * as booksService from '../../services/booksService';
-import { useState } from 'react';
+import AuthContext from "../../contexts/authContext";
+import { useState, useContext, useEffect } from 'react';
 import { genres, language, bookFormKeys } from '../../lib/bookLib';
 
 
@@ -20,11 +21,24 @@ const initialState = {
     condition: '',
     language: '',
     bookLocation: '',
+    ownerUsername: '',
+    ownerEmail: '',
+    ownerPhone: '',
 }
 
 export default function AddBook() {
     const[form, setForm] = useState(initialState);
     const navigate = useNavigate();
+    const { username, email, phone } = useContext(AuthContext)
+
+    useEffect( () => {
+        setForm(form => ({
+            ...form,
+            ownerUsername: username,
+            ownerEmail: email,
+            ownerPhone: phone,
+        }))
+    }, [])
 
     const formHandler = (e) => {
         let value = '';
@@ -49,7 +63,7 @@ export default function AddBook() {
     
     const addBookSubmitHandler = async (e) => {
         e.preventDefault();
-
+        
         try {
             await booksService.create(form);
             navigate('/all-books');

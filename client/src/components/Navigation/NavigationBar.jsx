@@ -4,7 +4,8 @@ import AuthContext from '../../contexts/authContext';
 import * as authService from '../../services/authService'
 import Path from '../../paths';
 import {Container, Nav, Navbar, NavDropdown, Modal} from 'react-bootstrap'
-import Logo from '../../assets/images/Logo.png'
+import Logo from '../../assets/images/Logo.png';
+import profilePicture from '../../assets/images/profile_img.jpg';
 import styles from './NavigationBar.module.css';
 import { pathToUrl } from '../../utils/pathUtils';
 
@@ -69,13 +70,14 @@ function NavigationBar() {
                             <Modal.Body>
                                 <div className={styles.modal}>
                                     <div className={styles.imageContainer}>
-                                        <img className={styles.image} src={userData.imageUrl}/>
+                                        <img className={styles.image} src={userData.imageUrl || profilePicture}/>
                                     </div>
                                     <div>
                                         <p><b>Username: </b>{userData.username}</p>
                                         <p><b>E-mail: </b>{userData.email}</p>
                                         <p><b>Country: </b>{userData.country}</p>
                                         <p><b>City: </b>{userData.city}</p>
+                                        <p><b>Phone number: </b>{userData.phone}</p>
                                     </div>
                                 </div>
                             </Modal.Body>

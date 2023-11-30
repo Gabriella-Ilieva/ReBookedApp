@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import cover from '../../assets/images/atlas-izpravi-ramene.jpg'
+import cover from '../../assets/images/book-cover.jpg'
 import styles from './BookItem.module.css'
 
 function BookItem({

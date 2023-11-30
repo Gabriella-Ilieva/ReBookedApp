@@ -52,15 +52,15 @@
 .bookData{
     display: inline;
     margin-left: 40px;
-    width: 25%;
+    width: 30%;
     min-width: 300px;
-    margin-bottom: 30px;
-    line-height: 50px;
+    margin-bottom: 20px;
+    line-height: 25px;
 }
 
 .bookDescription{
-    margin-bottom: 30px;
-    width: 45%;
+    margin-bottom: 20px;
+    width: 40%;
     min-width: 300px;
     text-align: justify;
 }
@@ -75,6 +75,21 @@
     background-color: rgb(207, 207, 207);
     margin-left: 20px;
     padding: 5px 10px;
-    border-radius: 10%;
+    border-radius: 10px;
     border: none;
+}
+
+.button{
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(207, 207, 207);
+}
+
+.contactToast{
+    display: flex;
+    width: 100%;
+}
+
+.dropDown{
+    width: 100%;
 }

@@ -13,6 +13,7 @@ import BookDetails from './components/BookDetails/BookDetails';
 import EditBook from './components/EditBook/EditBook';
 import AllBooks from './components/AllBooks/AllBooks';
 import UsersBooks from './components/UsersBooks/UsersBooks';
+import ErrorPage from './components/ErrorPage/404';
 
 import Path from './paths';
 
@@ -31,6 +32,7 @@ function App() {
                 <Route path={Path.Login} element={ <LogIn/> }/>
                 <Route path={Path.AllBooks} element={ <AllBooks/>} />
                 <Route path={Path.BookDetails} element={ <BookDetails/> }/>
+                <Route path='*' element={ <ErrorPage/> }/>
                 <Route element={<AuthGuard />}>
                     <Route path={Path.AddBook} element={ <AddBook/> }/>
                     <Route path={Path.EditBook} element={ <EditBook/> }/>

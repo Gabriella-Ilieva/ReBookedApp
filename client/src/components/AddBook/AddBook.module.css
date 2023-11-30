@@ -1,12 +1,11 @@
-.registerContainer{
+.container{
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: auto;
     justify-content: center;
     align-items: center;
     background: url('../../assets/images/bg-white-3.png') 0 0;
     color: #3e4452;
-    height: 85vh;
     text-align: center;
 }
 
@@ -19,10 +18,10 @@
     min-width: 350px;
 }
 
-.form input, .form button{
+.form input, .form select, .form button, .form textarea, .form div{
     margin-bottom: 20px;
 }
 
-.additionalText{
-    font-size: 14px;
+.form div{
+    text-align: left;
 }

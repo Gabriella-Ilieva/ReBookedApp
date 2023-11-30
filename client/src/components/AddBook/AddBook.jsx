@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import {Form, Button} from 'react-bootstrap';
-import styles from '../Register/Register.module.css'
+import styles from '../AddBook/AddBook.module.css'
 
 import * as booksService from '../../services/booksService';
 import { useState } from 'react';
@@ -60,7 +60,7 @@ export default function AddBook() {
     }
 
     return (
-        <div className={styles.registerContainer}>
+        <div className={styles.container}>
             <h3 className={styles.title}>ADD BOOK</h3>
             <Form className={styles.form} onSubmit={addBookSubmitHandler}>
                 <Form.Control type="text" placeholder="Title" name={bookFormKeys.Title} value={form.title} onChange={formHandler}/>
@@ -91,7 +91,7 @@ export default function AddBook() {
                 <Form.Control type="number" placeholder="Price in BGN" name={bookFormKeys.Price} value={form.price} onChange={formHandler} />
                 <Form.Check type="checkbox" label="Book with Cause" name='withCause' onClick={formHandler}/>
                 <Form.Control className={`with-cause ${form['withCause'] ? 'active' : ''}`} type="text" placeholder="Cause URL" name={bookFormKeys['Cause URL']} value={form['causeURL']} onChange={formHandler} />
-                <Form.Control type="textarea" placeholder="Description" name={bookFormKeys.Description} value={form.description} onChange={formHandler} />
+                <Form.Control as={'textarea'} type="textarea" placeholder="Description" name={bookFormKeys.Description} value={form.description} onChange={formHandler} />
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

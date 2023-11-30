@@ -42,7 +42,7 @@ export default function RegisterUser() {
                 <Button variant="primary" type="submit"> Submit </Button>
             </Form>
             <p className={styles.additionalText}>Already have an account? 
-                <Link to={'/login'}><b>Log In</b></Link>
+                <Link to={'/login'}><b> Log In</b></Link>
             </p>
         </div>
     );

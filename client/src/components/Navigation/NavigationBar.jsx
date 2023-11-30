@@ -49,16 +49,18 @@ function NavigationBar() {
                                 <Nav.Link as={Link} eventKey={2} to={Path.Register}>Register</Nav.Link>
                             </Nav>
                         )}
-                        {isAuthenticated && (
+                        
                             <Nav>
                                 <Nav.Link as={Link} to={Path.AddBook}>Add Book</Nav.Link>
+                                {isAuthenticated && (
                                 <NavDropdown title={username} id="basic-nav-dropdown">
                                     <NavDropdown.Item onClick={handleShow}>View details</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to={pathToUrl(Path.UsersBooks, {userId})}>My books</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to={Path.Logout}>Log Out</NavDropdown.Item>
                                 </NavDropdown>
+                                )}
                             </Nav>
-                        )}
+                        
                     </Navbar.Collapse>
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>

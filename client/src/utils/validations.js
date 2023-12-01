@@ -14,6 +14,9 @@ export const registerValidations={
     email: Yup.string()
         .email('Invalid email address')
         .required('Required'),
+    confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], "The value should match the Password field value")
+        .required('Required'),
 };
 
 export const loginValidations={
@@ -22,4 +25,29 @@ export const loginValidations={
     email: Yup.string()
         .email('Invalid email address')
         .required('Required'),
+};
+
+export const addBookValidations={
+    imageUrl: Yup.string()
+        .url('The URL is not valid'),
+    withCause: Yup.boolean(),
+    causeUrl: Yup.string()
+        .url('The URL is not valid')
+        .when("withCause", (withCause, schema) => {
+            if(withCause)
+              return schema.required("You should provide an URL to the cause")
+            return schema
+          }),
+    title: Yup.string()
+        .min(2, 'Title should be at least 2 characters')
+        .required('Required'),
+    author: Yup.string()
+        .min(2, 'Author name should be at least 2 characters')
+        .required('Required'),
+    genre: Yup.string()
+        .required('Required'),
+    price: Yup.number()
+        .positive('Price should be a positive number'),
+    description: Yup.string()
+        .max(500, 'Description should not be more than 500 characters')
 };

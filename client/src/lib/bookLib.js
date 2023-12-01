@@ -1,5 +1,5 @@
 export const genres = {
-    Genre: 'genre',
+    // Genre: 'genre',
     Action: 'action',
     'Adult & Erotic': 'adult-erotic',
     Adventure: 'adventure',
@@ -35,7 +35,7 @@ export const genres = {
 }
 
 export const language = {
-    Language: 'language',
+    // Language: 'language',
     Bulgarian: 'bulgarian',
     English: 'english',
     French: 'french',

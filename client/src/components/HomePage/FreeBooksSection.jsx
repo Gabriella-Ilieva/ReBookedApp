@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+
 import * as booksService from '../../services/booksService'
 import BookItem from "../BookItem/BookItem";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import styles from './FreeBooksSection.module.css';
+
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css"; 
+
+import styles from './FreeBooksSection.module.css';
 
 
 function FreeBookSection(){

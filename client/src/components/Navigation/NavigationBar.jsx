@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
+
 import AuthContext from '../../contexts/authContext';
 import * as authService from '../../services/authService'
 import Path from '../../paths';
+import { pathToUrl } from '../../utils/pathUtils';
+
+import styles from './NavigationBar.module.css';
 import {Container, Nav, Navbar, NavDropdown, Modal} from 'react-bootstrap'
 import Logo from '../../assets/images/Logo.png';
 import profilePicture from '../../assets/images/profile_img.jpg';
-import styles from './NavigationBar.module.css';
-import { pathToUrl } from '../../utils/pathUtils';
 
 
 function NavigationBar() {

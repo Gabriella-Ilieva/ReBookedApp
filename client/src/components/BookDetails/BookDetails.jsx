@@ -1,12 +1,14 @@
-import { useState, useEffect, useContext } from "react";
-import * as booksService from '../../services/booksService'
 import { Link, useNavigate, useParams } from "react-router-dom";
-import cover from '../../assets/images/book-cover.jpg'
-import styles from './BookDetails.module.css'
+import { useState, useEffect, useContext } from "react";
+
+import * as booksService from '../../services/booksService'
 import AuthContext from "../../contexts/authContext";
 import Path from "../../paths";
 import { pathToUrl } from "../../utils/pathUtils";
+
 import { DropdownButton, Dropdown, ButtonGroup, Toast } from 'react-bootstrap';
+import styles from './BookDetails.module.css'
+import cover from '../../assets/images/book-cover.jpg'
 
 function BookDetails() {
     const { userId, isAuthenticated } = useContext(AuthContext)
@@ -46,11 +48,11 @@ function BookDetails() {
             <div className={styles.causeSection}>
                 {book.withCause && (<p className={styles.causeText}>
                     <span className={styles.important}>NOTICE !!!</span>This book supports a cause. By purchasing it, you will support the following cause: 
-                    <a href={causeLink} className={styles.causeLink}>{book.causeURL}</a></p>)}
+                    <a href={causeLink} className={styles.causeLink}>{book.causeUrl}</a></p>)}
             </div>
             <div className={styles.content}>
                 <div className={styles.imageContainer}>
-                    <img className={styles.image} src={book.image || cover}/>
+                    <img className={styles.image} src={book.imageUrl || cover}/>
                 </div>
                 <div className={styles.bookData}>
                     <p><b>Author: </b>{book.author}</p>

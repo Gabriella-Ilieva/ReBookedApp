@@ -1,12 +1,11 @@
 .registerContainer{
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: auto;
     justify-content: center;
     align-items: center;
     background: url('../../assets/images/bg-white-3.png') 0 0;
     color: #3e4452;
-    height: 85vh;
     text-align: center;
 }
 
@@ -19,10 +18,31 @@
     min-width: 350px;
 }
 
-.form input, .form button{
-    margin-bottom: 20px;
+
+.form input, .form button, .form p{
+    margin-top: 20px;
+}
+
+.form div{
+    color: red;
 }
 
 .additionalText{
-    font-size: 14px;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.form button{
+    background-color: grey;
+    border: solid 2px gray;
+}
+
+.form button:hover{
+    background-color: white;
+    border: solid 2px gray;
+    color: #3e4452;
+}
+
+.additionalText a{
+    text-decoration: none;
 }

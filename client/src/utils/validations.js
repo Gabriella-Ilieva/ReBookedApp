@@ -49,5 +49,11 @@ export const addBookValidations={
     price: Yup.number()
         .positive('Price should be a positive number'),
     description: Yup.string()
-        .max(500, 'Description should not be more than 500 characters')
+        .max(500, 'Description should not be more than 500 characters'),
+};
+
+export const commentValidations={
+    comment: Yup.string()
+        .max(200, 'Comment should not be more than 200 characters')
+        .required('Required'),
 };

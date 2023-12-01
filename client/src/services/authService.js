@@ -25,8 +25,8 @@ export const logout = () => request.get(`${baseUrl}/logout`);
 
 export const userDetails = () => request.get(`${baseUrl}/me`);
 
-export const getUser = async (userId) => {
-    const result = await request.get(`${baseUrl}/${bookId}`, );
+// export const getUser = async (userId) => {
+//     const result = await request.get(`${baseUrl}/${bookId}`, );
 
-    return result;
-}
+//     return result;
+// }

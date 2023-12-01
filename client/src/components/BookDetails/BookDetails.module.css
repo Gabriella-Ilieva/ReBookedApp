@@ -97,3 +97,28 @@
 .info{
     cursor:text;
 }
+
+.comments{
+    padding: 30px 50px 30px 50px;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    background-color: transparent;
+    position: relative;
+    justify-content: space-around;
+}
+
+.commentsContainer{
+    padding: 30px;
+    text-align: center;
+    background: url('../../assets/images/bg-white-3.png') 0 0;
+    color: #3e4452;
+}
+
+.singleComment{
+    border-bottom: solid 1px #7a7d83;
+    padding: 10px;
+    margin: 10px;
+}

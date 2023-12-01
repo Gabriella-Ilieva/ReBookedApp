@@ -72,8 +72,8 @@ function BookDetails() {
                             >
                             {isAuthenticated && 
                             <>
-                                <Dropdown.Item eventKey="1">Email: {book.ownerEmail}</Dropdown.Item>
-                                <Dropdown.Item eventKey="2">Phone: {book.ownerPhone}</Dropdown.Item>
+                                <Dropdown.Item eventKey="1" role='text' className={styles.info}>Email: {book.ownerEmail}</Dropdown.Item>
+                                <Dropdown.Item eventKey="2" role='text' className={styles.info}>Phone: {book.ownerPhone}</Dropdown.Item>
                             </>
                             }
                             {!isAuthenticated && 

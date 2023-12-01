@@ -93,3 +93,7 @@
 .dropDown{
     width: 100%;
 }
+
+.info{
+    cursor:text;
+}

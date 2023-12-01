@@ -1,35 +1,56 @@
-import { Form, Button } from 'react-bootstrap';
 import { useContext } from 'react';
-import useForm from '../../hooks/useForm';
-import AuthContext from '../../contexts/authContext';
-import styles from './LogIn.module.css'
 import { Link } from 'react-router-dom';
+import AuthContext from '../../contexts/authContext';
 
-const LoginFormKeys = {
-    Email: 'email',
-    Password: 'password',
-};
+import { MyTextInput } from '../../lib/fields'
+import { Formik, Form} from 'formik';
+import * as Yup from 'yup';
+import { loginValidations } from '../../utils/validations';
 
-function LogIn() {
+import styles from './LogIn.module.css'
+import Button  from 'react-bootstrap/Button';
+
+        
+const LogIn = () => {
     const { loginSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-        [LoginFormKeys.Email]: '',
-        [LoginFormKeys.Password]: '',
-    });
 
     return (
         <div className={styles.logInContainer}>
-            <h3 className={styles.title}>Log In</h3>
-            <Form className={styles.form} onSubmit={onSubmit}>
-                <Form.Control type="email" placeholder="Email" name={LoginFormKeys.Email} onChange={onChange} value={values[LoginFormKeys.Email]} />
-                <Form.Control type="password" placeholder="Password" name={LoginFormKeys.Password}onChange={onChange} value={values[LoginFormKeys.Password]} />
-                <Button variant="primary" type="submit">Submit</Button>
-            </Form>
+        <h2 className={styles.title}>Log In</h2>
+        <Formik
+            initialValues={{
+            email: '',
+            password: '',
+            }}
+            validationSchema={Yup.object(loginValidations)}
+            onSubmit={(values, { setSubmitting }) => {
+                loginSubmitHandler(values)
+                setSubmitting(false);
+            }}
+        >
+            <Form className={styles.form}>
+            <MyTextInput
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="Email"
+            />
+    
+            <MyTextInput
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="Password"
+            />
+    
+            <Button variant="primary" type="submit">Submit</Button>
             <p>Don`t have an account?
                 <Link to={'/register'}> Register</Link>
             </p>
+            </Form>
+        </Formik>
         </div>
     );
-}
+};
 
 export default LogIn;

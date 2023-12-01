@@ -1,52 +1,105 @@
-import {Form, Button} from 'react-bootstrap';
-import styles from './Register.module.css'
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
 import AuthContext from '../../contexts/authContext';
-import useForm from '../../hooks/useForm';
+import { MyTextInput } from '../../lib/fields';
+import { registerValidations } from '../../utils/validations'
+import { Formik, Form} from 'formik';
+import * as Yup from 'yup';
+
+import Button from 'react-bootstrap/Button';
+import styles from './Register.module.css'
 
 
-const RegisterFormKeys = {
-    Username: 'username',
-    Email: 'email',
-    ImageURL: 'imageUrl',
-    Country: 'country',
-    City: 'city',
-    Phone: 'phone',
-    Password: 'password',
-    ConfirmPassword: 'confirm-password',
-};
 
-export default function RegisterUser() {
+const RegisterUser = () => {
     const { registerSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
-        [RegisterFormKeys.Username]: '',
-        [RegisterFormKeys.Email]: '',
-        [RegisterFormKeys.ImageURL]: '',
-        [RegisterFormKeys.Country]: '',
-        [RegisterFormKeys.City]: '',
-        [RegisterFormKeys.Phone]: '',
-        [RegisterFormKeys.Password]: '',
-        [RegisterFormKeys.ConfirmPassword]: '',
-    });
+
     return (
         <div className={styles.registerContainer}>
-            <h3 className={styles.title}>REGISTER</h3>
-            <Form className={styles.form} onSubmit={onSubmit}>
-                <Form.Control type="text" placeholder="Username" name={RegisterFormKeys.Username} onChange={onChange} values={values[RegisterFormKeys.Username]} />
-                <Form.Control type="email" placeholder="Email" name={RegisterFormKeys.Email} onChange={onChange} values={values[RegisterFormKeys.Email]} />
-                <Form.Control type="text" placeholder="Image URL" name={RegisterFormKeys.ImageURL} onChange={onChange} values={values[RegisterFormKeys.ImageURL]} />
-                <Form.Control type="text" placeholder="Country" name={RegisterFormKeys.Country} onChange={onChange} values={values[RegisterFormKeys.Country]} />
-                <Form.Control type="text" placeholder="City" name={RegisterFormKeys.City} onChange={onChange} values={values[RegisterFormKeys.City]} />
-                <Form.Control type="text" placeholder="Phone number - 0888888888" name={RegisterFormKeys.Phone} onChange={onChange} values={values[RegisterFormKeys.Phone]} />
-                <Form.Control type="password" placeholder="Password" name={RegisterFormKeys.Password} onChange={onChange} values={values[RegisterFormKeys.Password]} />
-                <Form.Control type="password" placeholder="Confirm Password" name={RegisterFormKeys.ConfirmPassword} onChange={onChange} values={values[RegisterFormKeys.ConfirmPassword]} />
-                <Button variant="primary" type="submit"> Submit </Button>
-            </Form>
-            <p className={styles.additionalText}>Already have an account? 
-                <Link to={'/login'}><b> Log In</b></Link>
-            </p>
+            <h2 className={styles.title}>REGISTER</h2>
+            <Formik
+                initialValues={{
+                    username: '',
+                    email: '',
+                    imageUrl: '',
+                    country: '',
+                    city: '',
+                    phone: '',
+                    password: '',
+                    confirmPassword: '',
+                }}
+                validationSchema={Yup.object(registerValidations)}
+                onSubmit={(values, { setSubmitting }) => {
+                    registerSubmitHandler(values)
+                    setSubmitting(false);
+                }}
+            >
+                <Form className={styles.form}>
+                    <MyTextInput
+                        label="Username"
+                        name="username"
+                        type="text"
+                        placeholder="Username"
+                    />
+
+                    <MyTextInput
+                        label="Email"
+                        name="email"
+                        type="email"
+                        placeholder="Email"
+                    />
+
+                    <MyTextInput
+                        label="Image URL"
+                        name="imageUrl"
+                        type="text"
+                        placeholder="Image URL"
+                    />
+
+                    <MyTextInput
+                        label="Country"
+                        name="country"
+                        type="text"
+                        placeholder="Country"
+                    />
+
+                    <MyTextInput
+                        label="City"
+                        name="city"
+                        type="text"
+                        placeholder="City"
+                    />
+
+                    <MyTextInput
+                        label="Phone number"
+                        name="phone"
+                        type="tel"
+                        placeholder="Phone number - 0888111111"
+                    />
+            
+                    <MyTextInput
+                        label="Password"
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                    />
+
+                    <MyTextInput
+                        label="Confirm password"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirm password"
+                    />
+            
+                    <Button variant="primary" type="submit">Submit</Button>
+                    <p className={styles.additionalText}>Already have an account? 
+                        <Link to={'/login'}><b> Log In</b></Link>
+                    </p>
+                </Form>
+            </Formik>
         </div>
     );
 };
+
+export default RegisterUser

@@ -46,6 +46,10 @@ export const addBookValidations={
         .required('Required'),
     genre: Yup.string()
         .required('Required'),
+    language: Yup.string()
+        .required('Required'),
+    condition: Yup.string()
+        .required('Required'),
     price: Yup.number()
         .positive('Price should be a positive number'),
     description: Yup.string()

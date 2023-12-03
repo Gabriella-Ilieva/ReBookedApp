@@ -4,7 +4,7 @@ import { useState, useEffect, useContext, useReducer } from "react";
 import { Formik, Form} from 'formik';
 import * as Yup from 'yup';
 import { commentValidations } from "../../utils/validations";
-import { MyTextInput } from "../../lib/fields";
+import { MyTextarea } from "../../lib/fields";
 
 import * as booksService from '../../services/booksService';
 import * as commentService from '../../services/commentService';
@@ -69,6 +69,8 @@ function BookDetails() {
             type: 'ADD_COMMENT',
             payload: newComment
         })
+
+
     }
 
     return(
@@ -128,7 +130,7 @@ function BookDetails() {
                 </div>
             </section>
             <section className={styles.commentsContainer}>
-                <h2>COMMENTS</h2>
+                <h2 className={styles.h2}>COMMENTS</h2>
                 <div className={styles.comments}>
                     {comments.map( ({ _id, comment, owner: { username } }) => 
                         <div key={`${_id}-0`} className={styles.singleComment}>
@@ -137,25 +139,26 @@ function BookDetails() {
                         </div>
                     )}
                     
-                    <div className={styles.container}>
+                    <div className={styles.formContainer}>
                         <h2 className={styles.title}>New comment</h2>
                         <Formik
                             initialValues={{
                                 comment: '',
                             }}
                             validationSchema={Yup.object().shape(commentValidations)}
-                            onSubmit={(values, { setSubmitting }) => {
-                                commentSubmitHandler(values)
+                            onSubmit={(values, { setSubmitting, resetForm }) => {
+                                commentSubmitHandler(values);
+                                resetForm();
                                 setSubmitting(false);
                             }}
                         >
                             <Form className={styles.form}>
 
-                                <MyTextInput
+                                <MyTextarea
                                     label="Comment"
                                     name="comment"
                                     type="textarea"
-                                    placeholder="Comment"
+                                    placeholder="Comment . . ."
                                 />
                         
                                 <Button variant="primary" type="submit">Submit</Button>

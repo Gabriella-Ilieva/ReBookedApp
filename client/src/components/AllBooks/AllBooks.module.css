@@ -1,7 +1,14 @@
 .wrapper{
     background: url('../../assets/images/bg-white-3.png') 0 0;
     margin: 0;
+    padding-top: 30px;
+    padding-bottom: 50px;
     
+}
+
+.accordion{
+    width: 90%;
+    margin: auto;
 }
 
 .title{
@@ -10,4 +17,16 @@
     letter-spacing: 5px;
     font-size: 32px;
     font-weight: 600;
+}
+
+.row{
+    margin-bottom: 20px;
+}
+
+.button{
+    margin: 10px;
+}
+
+.buttonContainer {
+    text-align: right;
 }

@@ -65,7 +65,7 @@ function NavigationBar() {
                             </Nav>
                         
                     </Navbar.Collapse>
-                        <Modal show={show} onHide={handleClose}>
+                        <Modal show={show} onHide={handleClose} className={styles.modalContainer}>
                             <Modal.Header closeButton>
                                 <Modal.Title>{userData.username}'s details</Modal.Title>
                             </Modal.Header>

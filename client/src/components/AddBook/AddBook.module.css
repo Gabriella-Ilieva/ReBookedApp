@@ -5,8 +5,9 @@
     justify-content: center;
     align-items: center;
     background: url('../../assets/images/bg-white-3.png') 0 0;
-    color: #3e4452;
+    color: #535967 !important;
     text-align: center;
+    padding-bottom: 50px;
 }
 
 .title{
@@ -18,10 +19,41 @@
     min-width: 350px;
 }
 
-.form input, .form select, .form button, .form textarea, .form div{
-    margin-bottom: 20px;
+.form input, .form select, .form button, .form textarea, .form label{
+    margin-top: 20px;
 }
 
 .form div{
     text-align: left;
+}
+
+.form p{
+    text-align: left;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.form p span{
+    color: red;
+}
+
+.checkbox{
+    display: flex !important;
+    align-items: center;
+    padding-left: 1.5em;
+}
+
+.checkbox label{
+    margin-left: 5px;
+}
+
+.form button{
+    background-color: grey;
+    border: solid 2px gray;
+}
+
+.form button:hover{
+    background-color: white;
+    border: solid 2px gray;
+    color: #535967;
 }

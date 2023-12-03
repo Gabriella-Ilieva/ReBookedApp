@@ -14,6 +14,18 @@ export const MyTextInput = ({ label, ...props }) => {
     );
   };
 
+export const MyTextarea = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+    return (
+      <>
+        <Form.Control as={'textarea'} className="text-input" {...field} {...props} />
+        {meta.touched && meta.error ? (
+          <div className="error">{meta.error}</div>
+        ) : null}
+      </>
+    );
+  };
+
 export  const MyCheckbox = ({ children, ...props }) => {
     const [field, meta] = useField({ ...props, type: 'checkbox' });
     return (

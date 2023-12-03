@@ -36,7 +36,7 @@ export default function AllBooks() {
 
         try {
             await booksService.filter(whereClause)
-                .then(result => setBooks(result));
+                .then(result => setBooks(result)); 
         } catch (err) {
             // Error notification
             console.log(err);
@@ -142,7 +142,9 @@ export default function AllBooks() {
                 </Accordion.Item>
             </Accordion>
             <Container>
-                <h3 className={styles.title}>ALL BOOKS</h3>
+                
+                { books == '' && <h3 className={styles.noBooks}>THERE ARE NO BOOKS!</h3>}
+                { books != '' && <h3 className={styles.title}>ALL BOOKS</h3>}
                 <Row xs={2} md={3} lg={5}>
                     {books.map( (book) => (
                         <Col key={book._id}><BookItem {...book} /></Col>

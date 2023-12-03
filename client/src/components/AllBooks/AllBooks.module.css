@@ -3,7 +3,7 @@
     margin: 0;
     padding-top: 30px;
     padding-bottom: 50px;
-    
+    min-height: 83vh;
 }
 
 .accordion{
@@ -20,7 +20,11 @@
 }
 
 .row{
-    margin-bottom: 20px;
+    align-items: center;
+}
+
+.row div{
+    margin: 10px 0;
 }
 
 .button{
@@ -29,4 +33,13 @@
 
 .buttonContainer {
     text-align: right;
+}
+
+.noBooks{
+    padding: 20px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 70px;
 }

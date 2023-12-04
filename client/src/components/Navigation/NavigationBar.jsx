@@ -44,7 +44,7 @@ function NavigationBar() {
                         <Nav className="me-auto">
                             <Nav.Link href="#features">About</Nav.Link>
                             <Nav.Link as={Link} to={Path.AllBooks}>Books</Nav.Link>
-                            <Nav.Link href="#pricing">Causes</Nav.Link>
+                            <Nav.Link as={Link} to={Path.AddBook}>Add Book</Nav.Link>
                         </Nav>
                         {!isAuthenticated && (
                             <Nav>
@@ -54,7 +54,6 @@ function NavigationBar() {
                         )}
                         
                             <Nav>
-                                <Nav.Link as={Link} to={Path.AddBook}>Add Book</Nav.Link>
                                 {isAuthenticated && (
                                 <NavDropdown title={username} id="basic-nav-dropdown">
                                     <NavDropdown.Item onClick={handleShow}>View details</NavDropdown.Item>

@@ -1,5 +1,4 @@
 export const genres = {
-    // Genre: 'genre',
     Action: 'action',
     'Adult & Erotic': 'adult-erotic',
     Adventure: 'adventure',
@@ -35,7 +34,6 @@ export const genres = {
 }
 
 export const language = {
-    // Language: 'language',
     Bulgarian: 'bulgarian',
     English: 'english',
     French: 'french',
@@ -47,17 +45,17 @@ export const language = {
 }
 
 
-export const bookFormKeys = {
-    Title: 'title',
-    Author: 'author',
-    Genre: 'genre',
-    Image: 'image',
-    Description: 'description',
-    Price: 'price',
-    Cover: 'cover',
-    'With Cause': 'withCause',
-    'Cause URL': 'causeURL',
-    Condition: 'condition',
-    Language: 'language',
-    'Book Location': 'bookLocation',
-};
+// export const bookFormKeys = {
+//     Title: 'title',
+//     Author: 'author',
+//     Genre: 'genre',
+//     Image: 'image',
+//     Description: 'description',
+//     Price: 'price',
+//     Cover: 'cover',
+//     'With Cause': 'withCause',
+//     'Cause URL': 'causeURL',
+//     Condition: 'condition',
+//     Language: 'language',
+//     'Book Location': 'bookLocation',
+// };

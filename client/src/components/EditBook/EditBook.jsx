@@ -1,110 +1,164 @@
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import * as booksService from '../../services/booksService';
-import { useState, useEffect } from 'react';
-import { genres, language, bookFormKeys } from '../../lib/bookLib';
+import { MyTextInput, MySelect, MyCheckbox, MyTextarea } from '../../lib/fields';
+import { addBookValidations } from '../../utils/validations'
+import { genres, language } from '../../lib/bookLib';
 
-import {Form, Button} from 'react-bootstrap';
-import styles from '../Register/Register.module.css'
+import { Formik, Form} from 'formik';
+import * as Yup from 'yup';
+
+import { Button } from 'react-bootstrap';
+import styles from './EditBook.module.css'
 
 
-const initialState = {
-    title: '',
-    author: '',
-    genre: '',
-    image: '',
-    description: '',
-    price: '',
-    cover: '',
-    withCause: false,
-    causeURL: '',
-    condition: '',
-    language: '',
-    bookLocation: '',
-}
-
-export default function AddBook() {
+function EditBook() {
     const { bookId } = useParams();
-    const[book, setBook] = useState(initialState);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        booksService.getOne(bookId)
-            .then(result => {
-                setBook(result);
-            });
-    }, [bookId]);
-
-    const bookHandler = (e) => {
-        let value = '';
-
-        switch (e.target.type) {
-            case 'checkbox':
-                value = !book[e.target.name]
-                break;
-            case 'number':
-                value = Number(e.target.value)
-                break;
-            default:
-                value = e.target.value
-                break;
-        }
-
-        setBook(book => ({
-            ...book,
-            [e.target.name]: value
-        }))
+    const startValues = {
+        title: '',
+        author: '',
+        genre: '',
+        image: '',
+        description: '',
+        price: '',
+        cover: '',
+        withCause: false,
+        causeUrl: '',
+        condition: '',
+        language: '',
+        bookLocation: '',
+        bookSold: false,
+        ownerUsername: '',
+        ownerEmail: '',
+        ownerPhone: '',
     }
-    
-    const editBookSubmitHandler = async (e) => {
-        e.preventDefault();
 
-        try {
-            await booksService.edit(bookId, book);
-            navigate('/all-books');
-        } catch (err) {
-            // Error notification
-            console.log(err);
-        }
+    const fields = Object.keys(startValues);
+
+    const editBookSubmitHandler = (values, { setStatus, setSubmitting }) => {
+        setStatus();
+
+        booksService.edit(bookId, values)
+            .then(navigate('/all-books'))
+            .catch (error => {
+                setSubmitting(false);
+                console.log(error);
+            });
     }
 
     return (
-        <div className={styles.registerContainer}>
-            <h3 className={styles.title}>ADD BOOK</h3>
-            <Form className={styles.form} onSubmit={editBookSubmitHandler}>
-                <Form.Control type="text" placeholder="Title" name={bookFormKeys.Title} value={book.title} onChange={bookHandler}/>
-                <Form.Control type="text" placeholder="Author" name={bookFormKeys.Author} value={book.author} onChange={bookHandler} />
-                <Form.Select type="select-one" name={bookFormKeys.Genre} onChange={bookHandler} value={book.genre}>
-                    {Object.keys(genres).map((g) => 
-                    <option key={g} type="text" name={g} value={g}>{g}</option>
-                    )}
-                </Form.Select>
-                <Form.Select type="select-one" name={bookFormKeys.Language} value={book.language} onChange={bookHandler}>
-                    {Object.keys(language).map((l) => 
-                    <option key={l} value={language.l}>{l}</option>
-                    )}
-                </Form.Select>
-                <Form.Select type="select-one" name={bookFormKeys.Cover} onChange={bookHandler} value={book.cover}>
-                    <option value='Cover Type'>Cover type</option>
-                    <option value='Hardcover' >Hardcover</option>
-                    <option value='Softcover' >Softcover</option>
-                </Form.Select>
-                <Form.Control type="text" placeholder="Image URL" name={bookFormKeys.Image} value={book.image} onChange={bookHandler} />
-                <Form.Select type="select-one" name={bookFormKeys.Condition} value={book.condition} onChange={bookHandler}>
-                    <option value='Condition' >Condition</option>
-                    <option value='New' >New</option>
-                    <option value='As new' >As new</option>
-                    <option value='Used' >Used</option>
-                </Form.Select>
-                <Form.Control type="text" placeholder="Book location (country/town)" name={bookFormKeys['Book Location']} value={book['bookLocation']} onChange={bookHandler} />
-                <Form.Control type="number" placeholder="Price in BGN" name={bookFormKeys.Price} value={book.price} onChange={bookHandler} />
-                <Form.Check type="checkbox" label="Book with Cause" name='withCause' onClick={bookHandler}/>
-                <Form.Control className={`with-cause ${book['withCause'] ? 'active' : ''}`} type="text" placeholder="Cause URL" name={bookFormKeys['Cause URL']} value={book['causeURL']} onChange={bookHandler} />
-                <Form.Control type="textarea" placeholder="Description" name={bookFormKeys.Description} value={book.description} onChange={bookHandler} />
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-        </div>
+        
+            <Formik
+                initialValues={ startValues }
+                validationSchema={Yup.object().shape(addBookValidations)}
+                onSubmit={editBookSubmitHandler}
+            >
+                {({ setFieldValue }) => {
+                const [book, setBook] = useState({});
+
+                useEffect(() => {
+                    booksService.getOne(bookId).then(b => {
+                    fields.forEach(field => setFieldValue(field, b[field], false));
+                        setBook(b);
+                    })}, []);
+
+                return (
+                    <div className={styles.container}>
+                        <h2 className={styles.title}>EDIT BOOK</h2>
+                    <Form className={styles.form}>
+                    <MyTextInput
+                        label="Title"
+                        name="title"
+                        type="text"
+                        placeholder="Title *"
+                    />
+
+                    <MyTextInput
+                        label="Author"
+                        name="author"
+                        type="text"
+                        placeholder="Author *"
+                    />
+
+                    <MySelect name="genre">
+                        <option value=''>Genre *</option>
+                        {Object.keys(genres).map((g) => 
+                            <option key={g} value={g}>{g}</option>
+                        )}
+                    </MySelect>
+
+                    <MySelect name="language">
+                        <option value=''>Language *</option>
+                        {Object.keys(language).map((l) => 
+                            <option key={l} value={l}>{l}</option>
+                        )}
+                    </MySelect>
+
+                    <MySelect name="cover">
+                        <option value=''>Cover type</option>
+                        <option value='hardcover' >Hardcover</option>
+                        <option value='softcover' >Softcover</option>
+                    </MySelect>
+
+                    <MyTextInput
+                        label="Image"
+                        name="image"
+                        type="text"
+                        placeholder="Image URL"
+                    />
+
+                    <MySelect name="condition">
+                        <option value='' >Condition *</option>
+                        <option value='new' >New</option>
+                        <option value='as-new' >As a new</option>
+                        <option value='used' >Used</option>
+                    </MySelect>
+
+                    <MyTextInput
+                        label="bookLocation"
+                        name="bookLocation"
+                        type="text"
+                        placeholder="Book location (Country, City)"
+                    />
+
+                    <MyTextInput
+                        label="Price"
+                        name="price"
+                        type="number"
+                        placeholder="Price in BGN"
+                    />
+
+                    <MyCheckbox name="withCause" label='Book with Cause' 
+                        className={styles.checkbox}>
+                    </MyCheckbox>
+
+                    <MyTextInput
+                        label="Cause URL"
+                        name="causeUrl"
+                        type="text"
+                        placeholder="Cause URL **"
+                    />
+
+                    <MyTextarea
+                        label="Description"
+                        name="description"
+                        type="textarea"
+                        placeholder="Description"
+                    />
+                    <p><span>*</span> required field</p>
+                    <p><span>**</span> field is required if "Book with Cause" is checked</p>
+            
+                    <Button variant="primary" type="submit" className={styles.submitBtn}>Submit</Button>
+                    <Button variant="primary" className={styles.cancelBtn} onClick={() => navigate(-1)}>Cancel</Button>
+                </Form>
+                </div>
+                );
+                 }}
+            </Formik>
     );
 }
+
+export default EditBook;

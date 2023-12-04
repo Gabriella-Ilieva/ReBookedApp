@@ -110,6 +110,10 @@
     justify-content: space-around;
 }
 
+.comments h3{
+    text-align: center;
+}
+
 .commentsContainer{
     padding: 30px 50px;
     text-align: center;

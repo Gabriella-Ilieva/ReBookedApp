@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useContext } from 'react';
 
 import { Formik, Form} from 'formik';
@@ -93,7 +93,7 @@ const AddBook = () => {
 
                     <MyTextInput
                         label="Image"
-                        name="imageUrl"
+                        name="image"
                         type="text"
                         placeholder="Image URL"
                     />
@@ -139,7 +139,8 @@ const AddBook = () => {
                     <p><span>*</span> required field</p>
                     <p><span>**</span> field is required if "Book with Cause" is checked</p>
             
-                    <Button variant="primary" type="submit">Submit</Button>
+                    <Button variant="primary" type="submit" className={styles.submitBtn}>Submit</Button>
+                    <Button variant="primary" className={styles.cancelBtn} onClick={() => navigate(-1)}>Cancel</Button>
                 </Form>
             </Formik>
         </div>

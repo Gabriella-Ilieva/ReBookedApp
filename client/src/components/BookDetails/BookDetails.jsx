@@ -38,7 +38,7 @@ function BookDetails() {
                     payload: result,
                 });
             });
-    }, [bookId, comments]);
+    }, [bookId]);
 
     causeLink = book.causeURL
     price = Number(book.price).toFixed(2)
@@ -84,7 +84,7 @@ function BookDetails() {
                 </div>
                 <div className={styles.content}>
                     <div className={styles.imageContainer}>
-                        <img className={styles.image} src={book.imageUrl || cover}/>
+                        <img className={styles.image} src={book.image || cover}/>
                     </div>
                     <div className={styles.bookData}>
                         <p><b>Author: </b>{book.author}</p>
@@ -132,13 +132,14 @@ function BookDetails() {
             <section className={styles.commentsContainer}>
                 <h2 className={styles.h2}>COMMENTS</h2>
                 <div className={styles.comments}>
+                    {comments == '' && <h3>There are no coments yet</h3>}
                     {comments.map( ({ _id, comment, owner: { username } }) => 
                         <div key={`${_id}-0`} className={styles.singleComment}>
                             <p key={`${_id}-1`}><b>{username}</b></p>
                             <p key={`${_id}-2`}>{comment}</p>
                         </div>
                     )}
-                    
+                    {isAuthenticated && 
                     <div className={styles.formContainer}>
                         <h2 className={styles.title}>New comment</h2>
                         <Formik
@@ -164,7 +165,7 @@ function BookDetails() {
                                 <Button variant="primary" type="submit">Submit</Button>
                             </Form>
                         </Formik>
-                    </div>
+                    </div>}
                 </div>
             </section>
         </>

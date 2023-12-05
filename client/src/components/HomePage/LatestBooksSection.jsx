@@ -14,8 +14,13 @@ function LatestBooksSection(){
     const [latestBooks, setLatestBooks] = useState([]);
 
     useEffect(() => {
+      try{
         booksService.getLatestBooks('', 0, 15)
             .then(result => setLatestBooks(result));
+      } catch(err) {
+        navigate('/error500')
+        console.log(err);
+      }
     }, [])
 
     var settings = {

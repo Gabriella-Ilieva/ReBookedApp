@@ -14,6 +14,7 @@ import EditBook from './components/EditBook/EditBook';
 import AllBooks from './components/AllBooks/AllBooks';
 import UsersBooks from './components/UsersBooks/UsersBooks';
 import ErrorPage from './components/ErrorPage/404';
+import ServerError from './components/ErrorPage/ServerError';
 
 import Path from './paths';
 
@@ -33,7 +34,8 @@ function App() {
                 <Route path={Path.Login} element={ <LogIn/> }/>
                 <Route path={Path.AllBooks} element={ <AllBooks/>} />
                 <Route path={Path.BookDetails} element={ <BookDetails/> }/>
-                <Route path={Path.About} element={ <About />}/>
+                <Route path={Path.About} element={ <About/> }/>
+                <Route path={Path.Error500} element={ <ServerError/> }/>
                 <Route path='*' element={ <ErrorPage/> }/>
                 <Route element={<AuthGuard />}>
                     <Route path={Path.AddBook} element={ <AddBook/> }/>

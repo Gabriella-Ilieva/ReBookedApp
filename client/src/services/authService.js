@@ -24,9 +24,3 @@ export const register = (username, email, imageUrl, country, city, phone, passwo
 export const logout = () => request.get(`${baseUrl}/logout`);
 
 export const userDetails = () => request.get(`${baseUrl}/me`);
-
-// export const getUser = async (userId) => {
-//     const result = await request.get(`${baseUrl}/${bookId}`, );
-
-//     return result;
-// }

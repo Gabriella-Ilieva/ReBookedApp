@@ -14,8 +14,13 @@ function FreeBookSection(){
     const [latestFreeBooks, setLatestFreeBooks] = useState([]);
 
     useEffect(() => {
+      try{
         booksService.getLatestBooks('price=0', 0, 15)
             .then(result => setLatestFreeBooks(result));
+      } catch (err) {
+          navigate('/error500')
+          console.log(err);
+        }
     }, [])
 
     var settings = {

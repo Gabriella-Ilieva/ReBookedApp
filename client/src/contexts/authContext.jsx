@@ -14,28 +14,43 @@ export const AuthProvider = ({
     const [auth, setAuth] = usePersistedState('auth', {});
 
     const loginSubmitHandler = async (values) => {
-        const result = await authService.login(values.email, values.password);
+        try{
+            const result = await authService.login(values.email, values.password);
 
-        setAuth(result);
+            setAuth(result);
 
-        localStorage.setItem('accessToken', result.accessToken);
+            localStorage.setItem('accessToken', result.accessToken);
 
-        navigate(-1);
+            navigate(-1);
+        } catch(err) {
+            navigate('/error500')
+            console.log(err);
+        }
     };
 
     const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.username, values.email, values.imageUrl, values.country, values.city, values.phone, values.password);
+        try{
+            const result = await authService.register(values.username, values.email, values.imageUrl, values.country, values.city, values.phone, values.password);
 
-        setAuth(result);
+            setAuth(result);
 
-        localStorage.setItem('accessToken', result.accessToken);
+            localStorage.setItem('accessToken', result.accessToken);
 
-        navigate(-1);
+            navigate(-1);
+        } catch(err) {
+            navigate('/error500')
+            console.log(err);
+        }
     };
 
     const logoutHandler = () => {
-        setAuth({});
-        localStorage.removeItem('accessToken');
+        try{
+            setAuth({});
+            localStorage.removeItem('accessToken');
+        } catch(err) {
+            navigate('/error500')
+            console.log(err);
+        }
     };
 
     const values = {

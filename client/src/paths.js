@@ -9,6 +9,7 @@ const Path = {
     EditBook: '/all-books/:bookId/edit',
     UsersBooks: '/books/:userId',
     About: '/about',
+    Error500: '/error500',
 };
 
 export default Path;

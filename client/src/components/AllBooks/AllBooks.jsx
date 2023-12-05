@@ -1,10 +1,11 @@
 import { Container, Row, Col, Accordion } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 import { Formik, Form} from 'formik';
 
 import * as booksService from '../../services/booksService';
-import { MyTextInput, MySelect, MyCheckbox, MyTextarea } from '../../lib/fields';
+import { MyTextInput, MySelect, MyCheckbox } from '../../lib/fields';
 import BookItem from '../BookItem/BookItem';
 import { genres, language } from '../../lib/bookLib';
 
@@ -14,11 +15,17 @@ import styles from './AllBooks.module.css'
 
 export default function AllBooks() {
     const [books, setBooks] = useState([]);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
-        booksService.getAll()
-            .then(result => setBooks(result));
+        try {
+            booksService.getAll()
+                .then(result => setBooks(result));
+        } catch (err) {
+            navigate('/error500')
+            console.log(err);
+        }
     }, []);
 
     const filterBooksSubmitHandler = async (values) => {
@@ -38,7 +45,7 @@ export default function AllBooks() {
             await booksService.filter(whereClause)
                 .then(result => setBooks(result)); 
         } catch (err) {
-            // Error notification
+            navigate('/error500')
             console.log(err);
         }
     }

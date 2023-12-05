@@ -42,8 +42,9 @@ function EditBook() {
         setStatus();
 
         booksService.edit(bookId, values)
-            .then(navigate('/all-books'))
+            .then(navigate(-1))
             .catch (error => {
+                navigate('/error500')
                 setSubmitting(false);
                 console.log(error);
             });

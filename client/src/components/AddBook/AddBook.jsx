@@ -21,9 +21,9 @@ const AddBook = () => {
     const addBookSubmitHandler = async (values) => {        
         try {
             await booksService.create(values);
-            navigate('/all-books');
+            navigate(-1);
         } catch (err) {
-            // Error notification
+            navigate('/error500');
             console.log(err);
         }
     }

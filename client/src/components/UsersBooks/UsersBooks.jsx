@@ -14,8 +14,13 @@ function UsersBooks() {
 
 
     useEffect(() => {
+        try{
         booksService.getUsersBooks(userId)
             .then(result => setBooks(result));
+        } catch(err) {
+            navigate('/error500')
+            console.log(err);
+        }
     }, [userId]);
 
     return(

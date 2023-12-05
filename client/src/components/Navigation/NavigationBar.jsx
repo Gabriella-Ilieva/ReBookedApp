@@ -45,6 +45,10 @@ function NavigationBar() {
                             <Nav.Link as={Link} to={Path.About}>About</Nav.Link>
                             <Nav.Link as={Link} to={Path.AllBooks}>Books</Nav.Link>
                             <Nav.Link as={Link} to={Path.AddBook}>Add Book</Nav.Link>
+                            <NavDropdown title="Error pages" id="basic-nav-dropdown">
+                                <NavDropdown.Item as={Link} to={'/404'}>404</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to={Path.Error500}>500</NavDropdown.Item>
+                            </NavDropdown>
                         </Nav>
                         {!isAuthenticated && (
                             <Nav>

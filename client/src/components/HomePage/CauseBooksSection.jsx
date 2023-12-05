@@ -14,8 +14,13 @@ function CauseBookSection(){
     const [latestCauseBooks, setLatestCauseBooks] = useState([]);
 
     useEffect(() => {
-        booksService.getLatestBooks('withCause=true', 0, 15)
-            .then(result => setLatestCauseBooks(result));
+      try{
+          booksService.getLatestBooks('withCause=true', 0, 15)
+              .then(result => setLatestCauseBooks(result));
+          } catch (err) {
+            navigate('/error500')
+            console.log(err);
+        }
     }, [])
 
     var settings = {

@@ -5,13 +5,16 @@
     justify-content: center;
     align-items: center;
     background: url('../../assets/images/bg-white-3.png') 0 0;
-    color: #535967 !important;
+    color: #494949 !important;
     text-align: center;
     padding-bottom: 50px;
 }
 
 .title{
     margin: 40px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
 .form{
@@ -48,21 +51,21 @@
 }
 
 .form .submitBtn{
-    background-color: grey;
-    border: solid 2px gray;
+    background-color: #06829a;
+    border: solid 2px #06829a;
     margin-right: 30px;
 }
 
 .form .cancelBtn{
     background-color: white;
     border: solid 2px gray;
-    color: #535967;
+    color: #494949;
 }
 
 .form .submitBtn:hover{
-    background-color: white;
-    border: solid 2px gray;
-    color: #535967;
+    background-color: #42adbe;
+    border: solid 2px #42adbe;
+    color: white;
 }
 
 .form .cancelBtn:hover{

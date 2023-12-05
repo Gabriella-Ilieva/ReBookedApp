@@ -46,8 +46,8 @@ export default function AllBooks() {
     return(
         <>
         <div className={styles.wrapper}>
-            <Accordion defaultActiveKey="0" className={styles.accordion}>
-                <Accordion.Item eventKey="0">
+            <Accordion className={styles.accordion}>
+                <Accordion.Item className={styles.accordionItem} eventKey="0">
                     <Accordion.Header>Filters</Accordion.Header>
                     <Accordion.Body>
                     <div className={styles.container}>

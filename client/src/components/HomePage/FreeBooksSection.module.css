@@ -9,5 +9,8 @@
 .title{
     text-align: center;
     padding-bottom: 25px;
-    color: #535967;
+    color: #494949;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 2px;
 }

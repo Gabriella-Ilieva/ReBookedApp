@@ -2,7 +2,7 @@
     padding: 30px;
     text-align: center;
     background: url('../../assets/images/bg-white-3.png') 0 0;
-    color: #535967;
+    color: #494949;
 }
 
 .causeSection{
@@ -71,20 +71,6 @@
     right: 20px;
 }
 
-.buttons button{
-    background-color: rgb(207, 207, 207);
-    margin-left: 20px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: none;
-}
-
-.button{
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(207, 207, 207);
-}
-
 .contactToast{
     display: flex;
     width: 100%;
@@ -118,21 +104,21 @@
     padding: 30px 50px;
     text-align: center;
     background: url('../../assets/images/bg-white-3.png') 0 0;
-    color: #535967;
+    color: #494949;
 }
 
 .h2{
-    color: #535967;
+    color: #494949;
 }
 
 .singleComment{
-    border-bottom: solid 1px #7a7d83;
+    border-bottom: solid 1px #06829a;
     padding: 10px;
     margin: 10px;
 }
 
 .formContainer{
-    color: #535967;
+    color: #494949;
     padding: 30px;
     width: 50%;
     text-align: center;
@@ -145,7 +131,7 @@
     margin-bottom: 10px;
 }
 
-.formContainer button{
+.buttons .deleteBtn, .buttons .editBtn{
     margin-top: 10px;
 }
 
@@ -153,4 +139,36 @@
     text-align: right;
     color: red;
     margin-right: 10px;
+}
+
+.buttons .editBtn, form .editBtn, .editBtn button{
+    background-color: #06829a;
+    border: solid 2px #06829a;
+    margin-right: 30px;
+    min-width: 70px;
+}
+
+.buttons .deleteBtn{
+    background-color: white;
+    border: solid 2px gray;
+    color: #494949;
+}
+
+.buttons .editBtn:hover, form .editBtn:hover, .editBtn button:hover{
+    background-color: #42adbe;
+    border: solid 2px #42adbe;
+    color: white;
+}
+
+form .editBtn{
+    margin-top: 20px;
+}
+
+.buttons .deleteBtn:hover{
+    background-color: grey;
+    border: solid 2px gray;
+}
+
+.username{
+    color: #06829a;
 }

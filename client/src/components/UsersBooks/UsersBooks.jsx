@@ -21,7 +21,7 @@ function UsersBooks() {
     return(
         <div className={styles.wrapper}>
             <Container>
-                <h3 className={styles.title}>ALL BOOKS</h3>
+                <h3 className={styles.title}>MY BOOKS</h3>
                 <Row xs={2} md={3} lg={5}>
                     {books.map( (book) => (
                         <Col key={book._id}><BookItem {...book} /></Col>

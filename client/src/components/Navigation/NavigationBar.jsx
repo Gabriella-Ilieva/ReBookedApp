@@ -8,7 +8,7 @@ import { pathToUrl } from '../../utils/pathUtils';
 
 import styles from './NavigationBar.module.css';
 import {Container, Nav, Navbar, NavDropdown, Modal} from 'react-bootstrap'
-import Logo from '../../assets/images/Logo.png';
+import Logo from '../../assets/images/logo_2.png';
 import profilePicture from '../../assets/images/profile_img.jpg';
 
 
@@ -33,7 +33,7 @@ function NavigationBar() {
                         <img
                         alt="Logo"
                         src={Logo}
-                        width="35"
+                        width="150"
                         height="35"
                         className="d-inline-block align-top"
                         />{' '}
@@ -42,7 +42,7 @@ function NavigationBar() {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav" className={styles.navigation}>
                         <Nav className="me-auto">
-                            <Nav.Link href="#features">About</Nav.Link>
+                            <Nav.Link as={Link} to={Path.About}>About</Nav.Link>
                             <Nav.Link as={Link} to={Path.AllBooks}>Books</Nav.Link>
                             <Nav.Link as={Link} to={Path.AddBook}>Add Book</Nav.Link>
                         </Nav>

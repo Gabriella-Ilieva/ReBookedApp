@@ -20,7 +20,7 @@ export const AuthProvider = ({
 
         localStorage.setItem('accessToken', result.accessToken);
 
-        navigate(Path.Home);
+        navigate(-1);
     };
 
     const registerSubmitHandler = async (values) => {
@@ -30,7 +30,7 @@ export const AuthProvider = ({
 
         localStorage.setItem('accessToken', result.accessToken);
 
-        navigate(Path.Home);
+        navigate(-1);
     };
 
     const logoutHandler = () => {

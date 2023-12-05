@@ -19,6 +19,7 @@ import Path from './paths';
 
 import styles from './components/App.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import About from './components/About/About';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                 <Route path={Path.Login} element={ <LogIn/> }/>
                 <Route path={Path.AllBooks} element={ <AllBooks/>} />
                 <Route path={Path.BookDetails} element={ <BookDetails/> }/>
+                <Route path={Path.About} element={ <About />}/>
                 <Route path='*' element={ <ErrorPage/> }/>
                 <Route element={<AuthGuard />}>
                     <Route path={Path.AddBook} element={ <AddBook/> }/>

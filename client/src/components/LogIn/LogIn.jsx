@@ -45,7 +45,7 @@ const LogIn = () => {
     
             <Button variant="primary" type="submit">Submit</Button>
             <p>Don`t have an account?
-                <Link to={'/register'}><b> Register</b></Link>
+                <Link to={'/register'}><b className={styles.additionalText}> Register</b></Link>
             </p>
             </Form>
         </Formik>

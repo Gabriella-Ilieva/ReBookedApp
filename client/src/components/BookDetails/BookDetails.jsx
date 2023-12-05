@@ -103,6 +103,7 @@ function BookDetails() {
                                 drop={'end'}
                                 variant="secondary"
                                 title='Owner contacts'
+                                className={styles.editBtn}
                                 >
                                 {isAuthenticated && 
                                 <>
@@ -121,10 +122,8 @@ function BookDetails() {
                     </div>
                     {userId === book._ownerId && (
                         <div className={styles.buttons}>
-                        <Link to={pathToUrl(Path.EditBook, {bookId})}>
-                            <button>Edit</button>
-                        </Link>
-                        <button onClick={deleteHandler}>Delete</button>
+                        <Button className={styles.editBtn} as={Link} to={pathToUrl(Path.EditBook, {bookId})}>Edit</Button>
+                        <Button className={styles.deleteBtn} onClick={deleteHandler}>Delete</Button>
                     </div>
                     )}
                 </div>
@@ -135,7 +134,7 @@ function BookDetails() {
                     {comments == '' && <h3>There are no coments yet</h3>}
                     {comments.map( ({ _id, comment, owner: { username } }) => 
                         <div key={`${_id}-0`} className={styles.singleComment}>
-                            <p key={`${_id}-1`}><b>{username}</b></p>
+                            <p className={styles.username} key={`${_id}-1`}><b>{username}</b></p>
                             <p key={`${_id}-2`}>{comment}</p>
                         </div>
                     )}
@@ -162,7 +161,7 @@ function BookDetails() {
                                     placeholder="Comment . . ."
                                 />
                         
-                                <Button variant="primary" type="submit">Submit</Button>
+                                <Button className={styles.editBtn} variant="primary" type="submit">Submit</Button>
                             </Form>
                         </Formik>
                     </div>}

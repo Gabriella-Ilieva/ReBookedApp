@@ -17,6 +17,7 @@
     letter-spacing: 5px;
     font-size: 32px;
     font-weight: 600;
+    letter-spacing: 2px;
 }
 
 .row{
@@ -27,8 +28,22 @@
     margin: 10px 0;
 }
 
-.button{
+.buttonContainer .button{
     margin: 10px;
+    background-color: #06829a;
+    border-color: #06829a;
+}
+
+.buttonContainer .button:disabled{
+    margin: 10px;
+    background-color: #06829a;
+    border-color: #06829a;
+}
+
+.buttonContainer .button:hover{
+    margin: 10px;
+    background-color: #42adbe;
+    border-color: #42adbe;
 }
 
 .buttonContainer {

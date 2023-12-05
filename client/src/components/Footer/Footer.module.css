@@ -2,10 +2,26 @@
     width: 100%;
     background-color: rgba(242, 243, 243, 1);
     padding: 20px 60px;
-    text-align: right;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footerContainer p{
-    margin: 0;
+    color: #494949;
+    display: inline-block;
+    position: absolute;
+    right: 70px;
+    margin-bottom: 0;
+}
+
+.footerContainer img{
+    justify-content: center;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.footerContainer .icon{
+    color: #06829a;
 }

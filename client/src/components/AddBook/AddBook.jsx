@@ -19,13 +19,12 @@ const AddBook = () => {
     const { username, email, phone } = useContext(AuthContext)
     
     const addBookSubmitHandler = async (values) => {        
-        try {
-            await booksService.create(values);
-            navigate(-1);
-        } catch (err) {
-            navigate('/error500');
-            console.log(err);
-        }
+        await booksService.create(values)
+            .then(navigate(-1))
+            .catch (err => {
+                navigate('/error500');
+                console.log(err);
+            })
     }
 
     return (
@@ -54,7 +53,7 @@ const AddBook = () => {
                 validationSchema={Yup.object().shape(addBookValidations)}
                 onSubmit={(values, { setSubmitting }) => {
                     addBookSubmitHandler(values)
-                    // setSubmitting(false);
+                    setSubmitting(false);
                 }}
             >
                 <Form className={styles.form}>
@@ -135,7 +134,7 @@ const AddBook = () => {
                         label="Cause Name"
                         name="causeName"
                         type="text"
-                        placeholder="Cause name"
+                        placeholder="Cause name **"
                     />
 
                     <MyTextarea

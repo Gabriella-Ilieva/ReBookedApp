@@ -41,13 +41,12 @@ export default function AllBooks() {
         whereClause = [othersClause, causeClause, priceClause].filter(str => str !== null).join('&');
         whereClause = (whereClause? '?where='+whereClause : '')
 
-        try {
-            await booksService.filter(whereClause)
-                .then(result => setBooks(result)); 
-        } catch (err) {
-            navigate('/error500')
-            console.log(err);
-        }
+        await booksService.filter(whereClause)
+                .then(result => setBooks(result))
+                .catch (err => {
+                    navigate('/error500');
+                    console.log(err);
+                })
     }
 
     return(

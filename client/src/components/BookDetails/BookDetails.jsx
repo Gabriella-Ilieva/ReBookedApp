@@ -28,29 +28,27 @@ function BookDetails() {
     let causeLink = '';
 
     useEffect(() => {
-        try {
-            booksService.getOne(bookId)
-                .then(setBook)
-        } catch (err) {
-            navigate('/error500')
-            console.log(err);
-        };
+        booksService.getOne(bookId)
+            .then(setBook)
+            .catch (err => {
+                navigate('/error500')
+                console.log(err);
+            });
         
-        try {
-            commentService.getAll(bookId)
-                .then((result) => {
-                    dispatch({
-                        type: 'GET_ALL_COMMENTS',
-                        payload: result,
-                    });
+        commentService.getAll(bookId)
+            .then((result) => {
+                dispatch({
+                    type: 'GET_ALL_COMMENTS',
+                    payload: result,
                 });
-        } catch (err) {
-            navigate('/error500')
-            console.log(err);
-        };
+            })
+            .catch (err => {
+                navigate('/error500')
+                console.log(err);
+            });
 
     }, [bookId]);
-    console.log(book);
+    
     causeLink = book.causeUrl
     price = Number(book.price).toFixed(2)
     

@@ -33,6 +33,8 @@ export const addBookValidations={
     withCause: Yup.boolean(),
     causeUrl: Yup.string()
         .url('The URL is not valid'),
+    causeName: Yup.string()
+        .min(2, 'Name should be at least 2 characters'),
     title: Yup.string()
         .min(2, 'Title should be at least 2 characters')
         .required('Required'),

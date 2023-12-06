@@ -32,12 +32,7 @@ export const addBookValidations={
         .url('The URL is not valid'),
     withCause: Yup.boolean(),
     causeUrl: Yup.string()
-        .url('The URL is not valid')
-        .when("withCause", (withCause, schema) => {
-            if(withCause)
-              return schema.required("You should provide an URL to the cause")
-            return schema
-          }),
+        .url('The URL is not valid'),
     title: Yup.string()
         .min(2, 'Title should be at least 2 characters')
         .required('Required'),
@@ -51,9 +46,9 @@ export const addBookValidations={
     condition: Yup.string()
         .required('Required'),
     price: Yup.number()
-        .positive('Price should be a positive number'),
+        .min(0, 'Price should be a positive number'),
     description: Yup.string()
-        .max(500, 'Description should not be more than 500 characters'),
+        .max(900, 'Description should not be more than 900 characters'),
 };
 
 export const commentValidations={

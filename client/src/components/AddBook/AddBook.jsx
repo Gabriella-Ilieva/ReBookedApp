@@ -42,6 +42,7 @@ const AddBook = () => {
                     cover: '',
                     withCause: false,
                     causeUrl: '',
+                    causeName: '',
                     condition: '',
                     language: '',
                     bookLocation: '',
@@ -53,7 +54,7 @@ const AddBook = () => {
                 validationSchema={Yup.object().shape(addBookValidations)}
                 onSubmit={(values, { setSubmitting }) => {
                     addBookSubmitHandler(values)
-                    setSubmitting(false);
+                    // setSubmitting(false);
                 }}
             >
                 <Form className={styles.form}>
@@ -128,6 +129,13 @@ const AddBook = () => {
                         name="causeUrl"
                         type="text"
                         placeholder="Cause URL **"
+                    />
+
+                    <MyTextInput
+                        label="Cause Name"
+                        name="causeName"
+                        type="text"
+                        placeholder="Cause name"
                     />
 
                     <MyTextarea

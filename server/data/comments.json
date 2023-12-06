@@ -1,0 +1,23 @@
+{
+    "0a272c58-b7ea-4e09-a000-7ec988248f66": {
+        "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        "content": "Great recipe!",
+        "recipeId": "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
+        "_createdOn": 1614260681375,
+        "_id": "0a272c58-b7ea-4e09-a000-7ec988248f66"
+    },
+    "36aa2854-c4dd-4e77-8c26-83927358983a": {
+        "_ownerId": "7a65d215-8240-4278-89e1-cf9be72446aa",
+        "bookId": "56ff0666-9c8e-4efe-b648-90102ef2a9dd",
+        "comment": "The best book EVER!!!",
+        "_createdOn": 1701897812579,
+        "_id": "36aa2854-c4dd-4e77-8c26-83927358983a"
+    },
+    "a8b856e3-51f0-4f08-8898-435089701be6": {
+        "_ownerId": "7a65d215-8240-4278-89e1-cf9be72446aa",
+        "bookId": "79a41336-3bdd-4fe7-a793-d5ef14399afd",
+        "comment": "It sounds very interesting. Is it free?",
+        "_createdOn": 1701897876275,
+        "_id": "a8b856e3-51f0-4f08-8898-435089701be6"
+    }
+}

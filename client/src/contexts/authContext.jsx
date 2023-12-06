@@ -21,9 +21,9 @@ export const AuthProvider = ({
 
             localStorage.setItem('accessToken', result.accessToken);
 
-            navigate(-1);
+            navigate('/');
         } catch(err) {
-            navigate('/error500')
+            navigate('/register')
             console.log(err);
         }
     };

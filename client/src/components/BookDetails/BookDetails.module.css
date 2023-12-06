@@ -14,6 +14,11 @@
 
 .causeLink{
     display: block;
+    text-decoration: none;
+    color: #06829a;
+    font-size: larger;
+    padding-top: 10px;
+    cursor: pointer;
 }
 
 .important{

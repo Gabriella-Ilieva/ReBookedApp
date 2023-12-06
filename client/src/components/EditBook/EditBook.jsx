@@ -27,6 +27,7 @@ function EditBook() {
         cover: '',
         withCause: false,
         causeUrl: '',
+        causeName: '',
         condition: '',
         language: '',
         bookLocation: '',
@@ -141,6 +142,13 @@ function EditBook() {
                         name="causeUrl"
                         type="text"
                         placeholder="Cause URL **"
+                    />
+
+                    <MyTextInput
+                        label="Cause Name"
+                        name="causeName"
+                        type="text"
+                        placeholder="Cause name"
                     />
 
                     <MyTextarea

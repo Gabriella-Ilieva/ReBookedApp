@@ -30,11 +30,12 @@ function BookDetails() {
     useEffect(() => {
         try {
             booksService.getOne(bookId)
-                .then(setBook);
+                .then(setBook)
         } catch (err) {
             navigate('/error500')
             console.log(err);
-        }
+        };
+        
         try {
             commentService.getAll(bookId)
                 .then((result) => {
@@ -46,10 +47,11 @@ function BookDetails() {
         } catch (err) {
             navigate('/error500')
             console.log(err);
-        }
-    }, [bookId]);
+        };
 
-    causeLink = book.causeURL
+    }, [bookId]);
+    console.log(book);
+    causeLink = book.causeUrl
     price = Number(book.price).toFixed(2)
     
     const toggleShowA = () => {
@@ -89,7 +91,7 @@ function BookDetails() {
                 <div className={styles.causeSection}>
                     {book.withCause && (<p className={styles.causeText}>
                         <span className={styles.important}>NOTICE !!!</span>This book supports a cause. By purchasing it, you will support the following cause: 
-                        <a href={causeLink} className={styles.causeLink}>{book.causeUrl}</a></p>)}
+                        <a href={ causeLink } className={styles.causeLink}>{book.causeName}</a></p>)}
                 </div>
                 <div className={styles.content}>
                     <div className={styles.imageContainer}>

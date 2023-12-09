@@ -37,7 +37,9 @@ export default function AllBooks() {
         .join('&');
         othersClause = (othersClause ? othersClause : null);
         let causeClause = (withCause ? 'withCause%3Dtrue' : null);
-        let priceClause = (price ? `price<=${price}` : null);
+        console.log(causeClause);
+        let priceClause = (price ? `price%3C%3D${price}` : null);
+        console.log(priceClause);
         whereClause = [othersClause, causeClause, priceClause].filter(str => str !== null).join('&');
         whereClause = (whereClause? '?where='+whereClause : '')
 
